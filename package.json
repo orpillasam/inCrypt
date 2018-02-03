@@ -10,7 +10,7 @@
     "moment": "^2.20.1",
     "mysql2": "^1.5.1",
     "path": "^0.12.7",
-    "sequelize": "^4.32.1",
+    "sequelize": "^4.32.6",
     "sql": "^0.78.0"
   },
   "devDependencies": {},

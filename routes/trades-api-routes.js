@@ -41,7 +41,7 @@ module.exports = (app) => {
 	    	trade_date: req.body.trade_date	
 	    }).then(function(dbTrade) {
 				res.json(dbTrade);
-				updateCoin();
+
 			});
 
 	 });
@@ -80,20 +80,5 @@ module.exports = (app) => {
 		});
 	});
 
-	function updateCoin() {
-		app.put("/api/coins", function(req, res) {
-			db.Coins.update({
-				total_quantity: req.body.total_quantity,
-				coin_value: req.body.coin_value
-			}, {
-				where: {
-					coin: req.body.coin,
-					coin_symbol: req.body.coin_symbol
-				}
-			}).then(function(dbCoinUpdate){
-				res.json(dbCoinUpdate)
-				console.log("is this update coin working?")
-			})
-		});
-	}
+
 }

@@ -13,12 +13,18 @@ module.exports = (app) => {
         });
     });
 
-    app.get("/api/coins/:coin", (req, res) =>{
+    app.put("/api/coins", (req, res) =>{
      
         console.log("db of coins is " + db.Coins);
-        db.Coins.findAll({
+        // consol.log("reqparamcoins is " + req.params)
+        db.Coins.update({
+
+            total_quantity: req.body.total_quantity,
+            coin_symbol: req.body.coin_symbol,
+            coin_value: req.body.coin_value
+        }, {
             where: {
-                coin: req.params.coin
+                coin: req.body.coin
             }
         }).then ((dbCoinPage) => {
             res.json(dbCoinPage);

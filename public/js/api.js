@@ -17,40 +17,33 @@ $(document).ready( function() {
         let symbol = "COINBASE_SPOT_ETH_USD";
         let coin = "BTC";
         let conversionType = "USD";
-        let time = moment().unix();
-        let oneDayAgo = moment().subtract('hours', 24).unix();
-        let oneWeekAgo = moment().subtract('days', 7).unix();
-        let oneMonthAgo = moment().subtract('months', 1).unix();
+        let time = moment();
         let coinID = "1182";
 
-        //query to get the current exchange rate of a coin, in a certain conversion type
+        //query to get the exchange rate of a coin, in a certain conversion type
         let queryURL = "https://min-api.cryptocompare.com/data/price?fsym=" + coin + "&tsyms=" + conversionType;
         
-        //query to get the current exchange using moment.js; will pull current day's "close" price
+        //query to get the exchange, in a certain conversion time, at an exact time
         let queryURL1 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + time;
 
-        //query to get the exchange rate of a coin, in a certain conversion type, 24 hours ago from query date
-        let queryURL2 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneDayAgo;
+        let queryURL2 = "https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id=" + coinID;
         
-        //query to get the exchange rate of a coin, in a certain conversion type, one week ago from query date
-        let queryURL3 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneWeekAgo;
+        //testy query taken from the API documentation that does not work. returns a 401 error, which is a wrong API key, but the api key is correct
+        //let queryURL2 = "https://rest.coinapi.io/v1/trades/BITSTAMP_SPOT_BTC_USD/history?time_start=2016-01-01T00:00:00?apikey=DEBEF958-17B3-4AF9-8224-4C4AFF45AADA";
         
-        //query to get the exchange rate of a coin, in a certain conversion type, one week ago from query date
-        let queryURL4 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
-
-
+        
         $.ajax({
             url: queryURL,
             method: "GET"
         }).done(function(response){
-            console.log('Current Conversion Rate: ' + JSON.stringify(response));
+            console.log(response);
         });
 
         $.ajax({
             url: queryURL1,
             method: "GET"
         }).done(function(response){
-            console.log('Conversion rate today close: ' + JSON.stringify(response));
+            console.log(response);
             
             //can hard code console.log(response.BTC.USD) but that won't be dynamic as coin var changes
             //get the 24hr change $ rate
@@ -59,29 +52,14 @@ $(document).ready( function() {
 
         });
 
-        $.ajax({
+        /*$.ajax({
             url: queryURL2,
             method: "GET"
         }).done(function(response){
-            console.log('Conversion rate 24 hrs ago: ' + JSON.stringify(response));
-        });
+            console.log(response.Data.General.ImageUrl);
 
-        $.ajax({
-            url: queryURL3,
-            method: "GET"
-        }).done(function(response){
-            console.log('Conversion rate 1 week ago: ' + JSON.stringify(response));
-
-        });
-        // return coinRateConverted;
-
-        $.ajax({
-            url: queryURL4,
-            method: "GET"
-        }).done(function(response){
-            console.log('Conversion rate 1 month ago: ' + JSON.stringify(response));
-        });
-        
+        })
+        // return coinRateConverted;*/
     };
 
 /************************  API Routes to the Database*************************/
