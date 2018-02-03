@@ -1,2 +1,1 @@
-# inCrypt
-Cryptocurrency Portfolio
+# inCrypts

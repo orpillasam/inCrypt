@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>InCrypt</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class ="container">
+		<!--- header -->
+		<header class = "row" id = "main-header">
+			<div class = "col-4">inCrypt
+			</div>
+
+			<!-- Drop down if we want to put exchange type -->
+			<div class = "col-4">Empty for now
+ 				<!-- <label id = "exchange-input">Exchange
+				</label>
+				<select class = 'select form-control' id= 'currency-type'>
+					<option value = 'USD'>USD</option>
+					<option value = 'GPB'>Pound</option>
+					<option value = 'EUR'>Euro</option>
+				</select>  -->
+
+			</div>
+
+
+			<div class = "col-4">Sign up  / Login
+			</div>
+
+		</header>
+		<div class = "row" id = 'wallet-name'>Wallet</div>
+		<!-- wallet -->
+		<div class = "row" id = 'wallets-row'>
+		
+			<div class = 'col-2' id = "usd-wallet">$USD
+			</div>
+
+			<div = class = 'col-2' id = "btc-wallet">BTC
+			</div>
+
+			<div class = 'col-2' id = "percent-wallet">+217%
+			</div>
+
+			<div = class = 'col-2' id = "dollar-wallet">+$170,000
+			</div>
+
+			<div class = 'col-2' id = "24%-wallet">+2.7%
+			</div>
+
+			<div = class = 'col-2' id = "24$-wallet">+$1,123
+			</div>
+
+		</div>
+
+		<div class = "row" id = 'coin-page'>
+			<div class = "col-2" id = 'coin-name'>Coin Name</div>
+			<div class = "col-2" id = 'coin-logo'>Coin logo</div>
+
+		</div>
+
+
+		<div class="row">
+			<div id = "portfolio-row"></div>
+				<table class="table">
+					<thead>
+						<tr>		
+							<th>Coin</th>	
+							<th>Quantity</th>
+							<th>Value</th>
+							<th>Average Cost</th>
+							<th>Currenty Price</th>
+							<th>24Hr% Change</th>
+							<th>24Hr$ Change</th>
+							<th>Total % Change</th>
+							<th>Total $ Change</th>
+							<th>Button</th>
+
+						</tr>
+					</thead>
+
+					<tbody id = 'coin-body'>
+						<tr>
+							<th scope="row">hard code coin</th>
+							<td>17</td>
+							<td>$187,000</td>
+							<td>$1,164</td>
+							<td>$11,500</td>
+							<td>1.5%</td>
+							<td>$542</td>
+							<td>$1,624</td>
+							<td>$160,000</td>
+							<td>Button</td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+
+
+
+		<!-- submit coin area -->
+		<div class = "row" id = 'trade-name'>Trade</div>
+		<div class = "row form-row" id = "search-row">
+			<div class = "col-1">
+				<label id = "trade-input">Trade Type
+				</label>
+				<select class = "select form-control" id = "trade-input">
+					<option value ='buy'>Buy</option>
+					<option value ='sell'>Sell</option>
+				</select>	
+			</div>
+
+			<div class = "col-2">
+				<label id = "exchange-input">Exchange
+				</label>
+				<select class = 'select form-control' id= 'exchange-input'>
+					<option value = 'Coinbase'>Coinbase</option>
+					<option value = 'Coinbase'>GDAX</option>
+					<option value = 'Coinbase'>Binance</option>
+					<option value = 'Coinbase'>Bittrex</option>
+					<option value = 'Coinbase'>Kraken</option>
+					<option value = 'Coinbase'>Gemini</option>
+					<option value = 'Coinbase'>Kucoin</option>
+					<option value = 'Coinbase'>Cryptopia</option>
+					<option value = 'Coinbase'>HitBTC</option>
+					<option value = 'Coinbase'>CoinExchange</option>
+				</select>
+			</div>
+
+			<div class = "col-2">
+				<label id = "coin-input">Coin
+				</label>
+				<select class = "select form-control" id = "coin-input">
+					<option value ='btc-usd'>BTC/USD</option>
+					<option value ='btc-eth'>BTC/ETH</option>
+					<option value ='btc-ltc'>BTC/LTC</option>
+					<option value ='eth-usd'>ETH/USD</option>
+					<option value ='eth-btc'>ETH/BTC</option>
+					<option value ='eth-ltc'>ETH/LTC</option>	
+					<option value ='ltc-usd'>LTC/USD</option>
+					<option value ='ltc-btc'>LTC/BTC</option>
+					<option value ='ltc-eth'>LTC/ETH</option>
+					<option value ='ltc-usd'>BCH/USD</option>
+					<option value ='bch-btc'>BCH/BTC</option>
+					<option value ='bch-eth'>BCH/ETH</option>	
+					<option value ='bch-ltc'>BCH/LTC</option>			
+				</select>
+			</div>
+
+			<div class = "col-2">
+				<label class = "quantity-input">Quantity
+				</label>
+				<input class = "form-control search-area" type="type" name="quantity" value="" id = "quantity" placeholder="Quantity">
+			</div>
+
+			<div class = "col-1">
+				<label class = "price-input">Trade Price
+				</label>
+				<input class = "form-control search-area" type="type" name="trade-price" value="" id = "trade-price" placeholder="Trade Price">
+			</div>
+
+			<div class = "col-2">
+				<label class = "date-input">Trade Date
+				</label>
+				<input class = "form-control search-area" type="type" name="trade-price" value="" id = "trade-price" placeholder="MM/DD/YYYY">
+			</div>
+
+			<div class = 'col-2'>
+				<button class = 'btn btn-outline-dark' id = 'coin-submit-button'>Submit
+				</button>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div id = "trades-row" class="col-2">Trade History</div>
+
+			<table class="table">
+				<thead>
+					<tr>			
+						<th>Type</th>
+						<th>Date</th>
+						<th>Exchange</th>
+						<th>Quantity</th>
+						<th>Trade Price</th>
+						<th>Cost</th>
+						<th>Proceeds</th>
+						<th>Edit Button</th>
+						<th>Delete Button</th>
+
+					</tr>
+				</thead>
+
+				<tbody id = 'trade-body'>
+					<tr>
+						<th scope="row">Buy</th>
+						<td>1/1/2018</td>
+						<td>Binance</td>
+						<td>10</td>
+						<td>$3,503</td>
+						<td>$35,030</td>
+						<td>--</td>
+						<td>edit button</td>
+						<td>delete button</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+
+<!-- 		<div class = 'row' id = 'portfolio-row'>
+			<div class = 'col-1' id = 'coin-output'>Coin Here
+			</div>
+
+			<div class = 'col-1' id = 'quantity-output'>Quantity Here
+			</div>			
+
+			<div class = 'col-1' id = 'value-output'>Value Here
+			</div>
+
+			<div class = 'col-1' id = 'current-price-output'>Current Price Here
+			</div>
+
+			<div class = 'col-1' id = '24hr%-change-output'>24hr % Change
+			</div>
+
+			<div class = 'col-1' id = 'total$-change-output'>Total % Change
+			</div>
+
+			<div class = 'col-1' id = '24hr$-change-output'>24hr $ Change
+			</div>
+
+			<div class = 'col-1' id = 'total$-change-output'>Total $ Change
+			</div>			
+
+			<div class = 'col-1' id = 'value-output'>View/Trade Button
+			</div>
+
+			<div class = 'col-1' id = 'current-price-output'>Delete Button?
+			</div>
+
+			<div class = 'col-1' id = '24hr-change-output'>24hr % Change
+			</div>
+
+			<div class = 'col-1' id = 'total-change-output'>Total % Change
+			</div>
+
+		</div> -->
+
+		<div class = "row" id = "main-footer">
+			<div class = "col-4">
+			</div>
+			<div class = "col-4">InCrypt 2018
+			</div>
+			<div class = "col-4">
+			</div>
+		</div>		
+
+	</div>
+	</div>
+
+		<script src="js/coins-html.js" type="text/javascript"></script>
+</body>

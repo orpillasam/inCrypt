@@ -1,0 +1,38 @@
+body {
+	background-color: yellow
+}
+
+#main-header {
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+#wallet-row {
+	background-color: grey;
+}
+
+#wallets-row{
+	background-color: grey;
+	margin-bottom: 10px;
+}
+#search-row {
+	background-color: grey;
+	margin-bottom: 20px;
+
+}
+
+#portfolio-row {
+	background-color: grey;
+	margin-bottom: 20px;
+}
+
+#portfolio-row thead {
+	font-size: 13px;
+
+}
+
+#portfolio-row tbody {
+	font-size: 11px;
+}
+
+

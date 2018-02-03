@@ -1,0 +1,1 @@
+INSERT INTO coins (coin, quantity, value, average_cost) VALUES ('Bitcoin', 100, 170,000, 3,00);
