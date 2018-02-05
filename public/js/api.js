@@ -17,49 +17,59 @@ $(document).ready( function() {
         let symbol = "COINBASE_SPOT_ETH_USD";
         let coin = "BTC";
         let conversionType = "USD";
-        let time = moment();
-        let coinID = "1182";
+        let time = moment().unix();
+        let oneDayAgo = moment().subtract('hours', 24).unix();
+        let oneWeekAgo = moment().subtract('days', 7).unix();
+        let oneMonthAgo = moment().subtract('months', 1).unix();
 
-        //query to get the exchange rate of a coin, in a certain conversion type
+        //query to get the current exchange rate of a coin, in a certain conversion type
         let queryURL = "https://min-api.cryptocompare.com/data/price?fsym=" + coin + "&tsyms=" + conversionType;
         
-        //query to get the exchange, in a certain conversion time, at an exact time
-        let queryURL1 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + time;
+        //query to get the exchange rate of a coin, in a certain conversion type, 24 hours ago from query date
+        let queryURL2 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneDayAgo;
+        
+        //query to get the exchange rate of a coin, in a certain conversion type, one week ago from query date
+        let queryURL3 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneWeekAgo;
+        
+        //query to get the exchange rate of a coin, in a certain conversion type, one week ago from query date
+        let queryURL4 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
 
-        let queryURL2 = "https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id=" + coinID;
-        
-        //testy query taken from the API documentation that does not work. returns a 401 error, which is a wrong API key, but the api key is correct
-        //let queryURL2 = "https://rest.coinapi.io/v1/trades/BITSTAMP_SPOT_BTC_USD/history?time_start=2016-01-01T00:00:00?apikey=DEBEF958-17B3-4AF9-8224-4C4AFF45AADA";
-        
-        
+
         $.ajax({
             url: queryURL,
             method: "GET"
         }).done(function(response){
-            console.log(response);
+            let currentPrice = response["USD"]
+            console.log("Current Price: " + currentPrice);
+            dayChangePercent(currentPrice);
         });
+
 
         $.ajax({
-            url: queryURL1,
-            method: "GET"
-        }).done(function(response){
-            console.log(response);
-            
-            //can hard code console.log(response.BTC.USD) but that won't be dynamic as coin var changes
-            //get the 24hr change $ rate
-            //get the 24hr change percentage
-            //calculate the 24hr change in $ total 
-
-        });
-
-        /*$.ajax({
             url: queryURL2,
             method: "GET"
         }).done(function(response){
-            console.log(response.Data.General.ImageUrl);
+            let oneDay = response["BTC"]["USD"]
+            console.log("Price 24 hrs Ago: " + oneDay);
+        });
 
-        })
-        // return coinRateConverted;*/
+        $.ajax({
+            url: queryURL3,
+            method: "GET"
+        }).done(function(response){
+            let oneWeek = response["BTC"]["USD"]
+            console.log("Price 1 Week Ago: " + oneWeek);
+        });
+        
+
+        $.ajax({
+            url: queryURL4,
+            method: "GET"
+        }).done(function(response){
+            let oneMonth = response["BTC"]["USD"]
+            console.log("Price 1 Month Ago: " + oneMonth);
+        });
+        
     };
 
 /************************  API Routes to the Database*************************/
@@ -114,7 +124,8 @@ $(document).ready( function() {
     };
 
     //function to create 24hr change in percent
-    function dayChangePercent() {
+    function dayChangePercent(currentPrice) {
+        console.log('24 Hour Change: ' + ((currentPrice - oneDay)/oneDay)*100 + '%');
     };
 
     //function to create 24hr change in USD

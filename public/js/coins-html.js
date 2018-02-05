@@ -12,7 +12,8 @@ $(document).ready( function() {
 	getTrades();
 	getCoins();
 	let currentTime = moment();
-	console.log("current time is " + currentTime);
+    console.log("current time is " + currentTime);
+    dayChangePercent();
 
 
 	//on click commands for each button 
@@ -210,8 +211,8 @@ function renderEmpty() {
         newTr.append("<td>" + coinData.coin + "</td>");
         newTr.append("<td> " + coinData.total_quantity + "</td>");
         newTr.append("<td> " + coinData.coin_value + "</td>");
-        newTr.append("<td> " + coinData.average_cost + "</td>");
-        // newTr.append("<td> " + (24hr%change) + "</td>");
+        //newTr.append("<td> " + coinData.average_cost + "</td>");
+        //newTr.append("<td> " + (24hr%change) + "</td>");
         // newTr.append("<td> " + (24hr$change) + "</td>");
         // newTr.append("<td> " + (total$change) + "</td>");
         return newTr;
@@ -232,6 +233,7 @@ function renderEmpty() {
 
     //function to create 24hr change in percent
     function dayChangePercent() {
+        console.log('24 Hour Change: ' + ((currentPrice - oneDay)/oneDay)*100 + '%');
     };
 
     //function to create 24hr change in USD
