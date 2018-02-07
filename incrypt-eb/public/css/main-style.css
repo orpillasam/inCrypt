@@ -7,7 +7,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 250px 800px 800px 5fr 1fr;
+    grid-template-rows: 250px 800px 800px 2fr 2fr;
     justify-content: center;
 }
 
@@ -38,12 +38,28 @@ body {
     text-align: center;
 }
 
-.my-wallet, .my-trade {
+.coins-header {
+    color: #45A29E;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 15px;
+    text-align: center;
+}
+
+.coins-value {
+    font-size: 24px;
+    text-align: center;
+    padding: 15px;
+    
+}
+
+.my-wallet, .my-trade , .my-coins{
     color: #C5C6C7;
     border-radius: 10px;
 	border: 3px #66FCF1 solid;
     font-size: 40px;
     font-family: 'Cairo', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .trade-form {
@@ -55,9 +71,11 @@ body {
 
     /*RESPONSIVE CSS */
    
-    @media screen and (min-width: 700px) {
+    @media only screen and (min-width: 700px) {
     
         .container {
+            max-width: 1280px;
+            margin: 0 auto;
             grid-template-rows: 1fr 450px 450px 400px 1fr;
         }
 
@@ -91,7 +109,7 @@ body {
         .my-coins {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(10,1fr);
+            grid-template-rows: repeat(4, 1fr);
         }
 
     }

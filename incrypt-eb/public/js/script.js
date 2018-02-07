@@ -16,3 +16,8 @@ $("#24dollar-wallet").html("+$170,000");
 $("#total-percent-wallet").html("+2.7%");
 $("#total-dollar-wallet").html("+$1,123");    
     
+
+//DATA INPUT - COIN VALUE //
+
+$("#coin-type").append("hard code");
+
