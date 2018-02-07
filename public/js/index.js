@@ -11,15 +11,6 @@ $(document).ready( function() {
     let priceInput = $("#trade-price-input");
     let dateInput = $("#trade-date-input");
 
-    tradeInput = tradeInput.val().trim();
-    exchangeInput = exchangeInput.val().trim();
-    coinInput = coinInput.val().trim();
-    quantityInput = quantityInput.val().trim();
-    priceInput = priceInput.val().trim();
-    dateInput = dateInput.val().trim();
-
-    
-
 
     // getCoinAPI();
     getCoins();
@@ -183,24 +174,23 @@ const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", 
 
     $("#trade-submit-button").on("click", function(){
         insertTrade();
-        updateCoin();
     });
 
     // This function inserts a new  into our database and then updates the view
 	function insertTrade(event) {
         // event.preventDefault();
         
-        console.log("coin input is " + coinInput);
-        let coinSymbol = coinConversion[coinInput];
+        console.log("coin input is " + coinInput.val().trim());
+        let coinSymbol = coinConversion[coinInput.val().trim()];
         console.log("coin symbol is " + coinSymbol);
 		let trade = {
-            coin: coinInput,
+            coin: coinInput.val().trim(),
             coin_symbol: coinSymbol,
-            trade_type: tradeInput,
-            exchange_type: exchangeInput,
-	    	trade_quantity: quantityInput,
-	    	trade_price: priceInput,
-            trade_date: dateInput
+            trade_type: tradeInput.val().trim(),
+            exchange_type: exchangeInput.val().trim(),
+	    	trade_quantity: quantityInput.val().trim(),
+	    	trade_price: priceInput.val().trim(),
+            trade_date: dateInput.val().trim()
         };
         
         console.log("checking if insertTrade works. Trade is " + trade);
@@ -209,36 +199,6 @@ const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", 
 
 	};
 
-    function updateCoin(event) {
-        console.log("updating coin?");
-        console.log("coin input is " + coinInput);
-        let coinSymbol = coinConversion[coinInput];
-        let coinValue = quantityInput * priceInput;
-        if (exchange_type == "Sell"){
-            quantityInput = Math.abs(quantityInput) * -1;
-            coinValue = Math.abs(coinValue) * -1;
-        }
-        else{
-
-        console.log(coinValue);
-        console.log(coinInput);
-        // event.preventDefault();
-        var coin = {
-            coin: coinInput,
-            coin_symbol: coinSymbol,
-            total_quantity: quantityInput,
-            coin_value: coinValue
-            // coin_value: req.body.coin_value
-        };
-        $.ajax({
-            method: "PUT",
-            url: "/api/coins",
-            data: coin
-          })
-        //   .then(getCoin);
-
-        }
-    }
 
 
 

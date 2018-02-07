@@ -66,19 +66,10 @@ $(document).ready( function() {
     		data: trade
     	}).then(getTrades);
     };
-    
-    // function updateCoin(coin) {
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/api/coin",
-    //         data: coin
-    //     }).then(updateCoin);
-    // };
 
 
   // This function inserts the trades into our database and then updates the view
 	function insertTrade(event) {
-        console.log("insert trade working?")
 		event.preventDefault();
 		var trade = {
 	    	coin: req.body.coin,
@@ -94,15 +85,14 @@ $(document).ready( function() {
 	};
 
     function updateCoin(event) {
-        console.log("updating coin?");
         event.preventDefault();
         var coin = {
             coin: req.body.coin,
             coin_symbol: req.body.coin_symbol,
-            total_quantity: req.body.total_quantity
-            // coin_value: req.body.coin_value
+            total_quantity: req.body.total_quantity,
+            coin_value: req.body.coin_value
         };
-        $.post("/api/coins", coin)
+
     }
 
 /*********************Functions to render data on the Trade Table*************************/
