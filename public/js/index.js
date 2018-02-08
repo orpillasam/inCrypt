@@ -3,17 +3,18 @@ $(document).ready( function() {
     // var nameInput = $("#coin-name");
     const coinList = $("tbody");
     const coinContainer = $("#portfolio-row");
-
     let tradeInput = $("#trade-input");
     let exchangeInput = $("#exchange-input");
     let coinInput = $("#coin-input");
     let quantityInput = $("#quantity-input");
     let priceInput = $("#trade-price-input");
     let dateInput = $("#trade-date-input");
-
-
-    // getCoinAPI();
-    getCoins();
+    let currentPriceBTC;
+    let currentPriceLTC;
+    let currentPriceETH;
+    let currentPriceBCH;
+    //need to pass some variables through
+    // getCoins();
 
     //on click commands for each button
 
@@ -29,76 +30,19 @@ $(document).ready( function() {
 /***********************Outside API Calls ******************************/
 /***********************************************************************/
 
-const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", "Bitcoin Cash": "BCH"};
-
-    //wait to have this called once we have the database information. Then uses the coin code to insert into the query
-    function getCoinAPI() {
-
-        let period = "1DAY";
-        let symbol = "COINBASE_SPOT_ETH_USD";
-        let coin = "BTC";
-        let conversionType = "USD";
-        let time = "2016-01-01T00:00:00"
-
-        //query to get the exchange rate of a coin, in a certain conversion type
-        let queryURL = "https://rest.coinapi.io/v1/exchangerate/" + coin + "/" + conversionType + "?apikey=DEBEF958-17B3-4AF9-8224-4C4AFF45AADA";
-        
-        //query to get the exchange, in a certain conversion time, at an exact time.  DOES NOT WORK. return 401 error, which is a wrong API, but the api key is correct
-        let queryURL1 = "https://rest.coinapi.io/v1/exchangerate/" + coin + "/" + conversionType + time + "?apikey=DEBEF958-17B3-4AF9-8224-4C4AFF45AADA";
-
-        //testy query taken from the API documentation that does not work. returns a 401 error, which is a wrong API key, but the api key is correct
-        let queryURL2 = "https://rest.coinapi.io/v1/trades/BITSTAMP_SPOT_BTC_USD/history?time_start=2016-01-01T00:00:00?apikey=DEBEF958-17B3-4AF9-8224-4C4AFF45AADA";
-
-        
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).done(function(response){
-            console.log(response);
-            let coinRate = response.rate;
-            console.log(coinRate);
-            let coinRateConverted = coinRate.toFixed(2);
-            console.log("coin rate converted is " + coinRateConverted);
-
-
-        });
-
-        $.ajax({
-            url: queryURL1,
-            method: "GET"
-        }).done(function(response2){
-            console.log(response2);
-            
-            //get the 24hr change $ rate
-            //get the 24hr change percentage
-            //calculate the 24hr change in $ total 
-
-        });
-
-        $.ajax({
-            url: queryURL2,
-            method: "GET"
-        }).done(function(response2){
-            console.log(response2);
-            
-           
-
-        })
-        // return coinRateConverted;
-    };
-
 
 /************************  API Routes to the Database*************************/
 /*****************************************************************************/
 
 
     // a function to get the table "coins" from the database cryptos_db;
-    function getCoins() {
+    function getCoins(currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH) {
         console.log("checking if getCoins works");
         $.get("/api/coins", function(data){
             var rowsToAdd = [];
+            var coinPriceArray = [];
             for (var i = 0; i <data.length; i++) {
-                rowsToAdd.push(createCoinRow(data[i]));
+                rowsToAdd.push(createCoinRow(data[i], currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH));
             }
             renderCoinList(rowsToAdd);
             console.log("rows to add are " + rowsToAdd);
@@ -114,17 +58,28 @@ const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", 
     //appends a new coin row in the table
     function createCoinRow(coinData) {
         
-        let averageCost = coinData.total_quantity * coinData.coin_value;
+
+        let value = coin.Data.total_quantity * currentPrice;
+
+        
+        let averageCost = 
         // let currentPrice = 
         var newTr = $("<tr>");
         newTr.data("author", coinData);
         newTr.append("<td>" + coinData.coin + "</td>");
         newTr.append("<td> " + coinData.total_quantity + "</td>");
-        newTr.append("<td> " + coinData.coin_value + "</td>");
+
+        newTr.append("<td> " + value + "</td>");
         newTr.append("<td> " + averageCost + "</td>");
-        // newTr.append("<td> " + (24hr%change) + "</td>");
-        // newTr.append("<td> " + (24hr$change) + "</td>");
-        // newTr.append("<td> " + (total$change) + "</td>");
+
+        newTr.append("<td> " + currentPrice + "</td>");
+        newTr.append("<td> " + (24hour price change) + "</td>");
+        newTr.append("<td> " + (24hour % change) + "</td>");
+        newTr.append("<td> " + (month price change) + "</td>");
+        newTr.append("<td> " + (month % change)  + "</td>");
+    
+
+  
         return newTr;
       }
 
@@ -141,19 +96,6 @@ const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", 
         }
     };
 
-    //function to create 24hr change in percent
-    function dayChangePercent() {
-    };
-
-    //function to create 24hr change in USD
-    function dayChangeDollar() {
-
-    };
-
-    //function to display total made on this coin
-    function totalCoinChange() {
-
-    };
 
     //function to alert if a field is empty when creating a new coin 
     function renderEmpty() {
@@ -177,7 +119,7 @@ const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", 
     });
 
     // This function inserts a new  into our database and then updates the view
-	function insertTrade(event) {
+	function insertTrade() {
         // event.preventDefault();
         
         console.log("coin input is " + coinInput.val().trim());
