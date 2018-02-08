@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const moment = require("moment");
+const moment = require("moment");
+
 
 const app = express();
-const PORT = process.env.PORT || 8081;
+const server = require('http').Server(app);
+const io = require("socket.io")(server);
+const PORT = process.env.PORT || 8080;
 
 const db = require("./models");
 
@@ -22,9 +25,15 @@ require("./routes/html-routes.js")(app);
 require("./routes/coins-api-routes.js")(app);
 require("./routes/trades-api-routes.js")(app);
 
+io.on('connection', function (socket) {
+	socket.emit('news', { hello: 'world' });
+	socket.on('my other event', function (data) {
+	  console.log(data);
+	});
+  });
 
 db.sequelize.sync().then(function(){
-	app.listen(PORT, function() {
+	server.listen(PORT, function() {
 		console.log("App listening on PORT " + PORT);
 	});
 });
