@@ -1,220 +1,173 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>InCrypt</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="js/ccc-streamer-utilities.js"></script>
+<html lang="en-us">
+   
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>inCrypt</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cairo|Maven+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="css/reset.css"> 
+        <link rel="stylesheet" href="css/main-style.css" type="text/css" media="all">
+       <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    	<script src="js/ccc-streamer-utilities.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/js/cryptosocket.js" type="text/javascript"></script>
-</head>
+    </head>
+    
+    <body class="container">
 
-<body>
-	<div class ="container">
-		<!--- header -->
-		<header class = "row" id = "main-header">
-			<div class = "col-4">inCrypt
-			</div>
+        <!--HEADER-->
+        <header class="header-area">
+            <div class="logo"><img src="./assets/logos/asset-5.svg" alt="inCrypt logo"></div>
+            <div class="exchange-rate">EMPTY FOR NOW</div>
+            <div class="user-login">SIGN UP | LOGIN</div>
+        </header>
 
-			<!-- Drop down if we want to put exchange type -->
-			<div class = "col-4">Empty for now
- 				<!-- <label id = "exchange-input">Exchange
-				</label>
-				<select class = 'select form-control' id= 'currency-type'>
-					<option value = 'USD'>USD</option>
-					<option value = 'GPB'>Pound</option>
-					<option value = 'EUR'>Euro</option>
-				</select>  -->
+        <!--WALLET-->
+        <section class="wallet-area">
+        
+            <h1 class="subheader">MY WALLET</h1>
 
-			</div>
+            <div class="my-wallet">    
+
+                <div class="wallet-data">
+                    <h3 class="wallet-header">Total Portfolio Value ($USD)</h3>
+                    <p class="wallet-value" id="usd-wallet"></p>
+                </div>
+
+                <div class="wallet-data">
+                    <h3 class="wallet-header">Total Portfolio Value (BTC)</h3>
+                    <p class="wallet-value" id="btc-wallet"></p>
+                </div>
+
+                <div class="wallet-data">
+                    <h3 class="wallet-header">24hr Change %</h3>
+                    <p class="wallet-value" id="24percent-wallet"></p>
+                </div>
+
+                <div class="wallet-data">
+                    <h3 class="wallet-header">24hr Change $</h3>
+                    <p class="wallet-value" id="24dollar-wallet"></p>
+                </div>
+
+                <div class="wallet-data">
+                    <h3 class="wallet-header">Total Change %</h3>
+                    <p class="wallet-value" id="total-percent-wallet"></p>
+                </div>
+
+                <div class="wallet-data">
+                    <h3 class="wallet-header">Total Change $</h3>
+                    <p class="wallet-value" id="total-dollar-wallet"></p>
+                </div>
+
+            </div>
+        </section>
+
+        <!--TRADE-->
+        <section class="trade-area">
+
+            <h1 class="subheader">MY TRADE</h1>
+
+            <div class="my-trade">  
+                
+                <div class="trade-form">
+                    <label id="trade">Trade Type</label>
+                    <select id="trade-input">
+                        <option value='buy'>Buy</option>
+                        <option value='sell'>Sell</option>
+                    </select>
+                </div>
+                
+                <div class="trade-form">
+                    <label id="exchange">Exchange</label>
+                    <select id="exchange-input">
+                        <option value='Coinbase'>Coinbase</option>
+                        <option value='Gdax'>GDAX</option>
+                        <option value='Binance'>Binance</option>
+                        <option value='Bittrex'>Bittrex</option>
+                        <option value='Kraken'>Kraken</option>
+                        <option value='Gemini'>Gemini</option>
+                        <option value='Kucoin'>Kucoin</option>
+                        <option value='Cryptopia'>Cryptopia</option>
+                        <option value='HitBTC'>HitBTC</option>
+                        <option value='CoinExchange'>CoinExchange</option>
+                    </select>
+                </div>
+
+                <div class="trade-form">
+                    <label id="coin">Coin</label>
+                    <select id="coin-input">
+                        <option value='Bitcoin'>Bitcoin</option>
+                        <option value='Ethereum'>Ethereum</option>
+                        <option value='Litecoin'>Litecoin</option>
+                        <option value='Bitcoin Cash'>Bitcoin Cash</option>
+                    </select>
+                </div>
+
+                <div class="trade-form">
+                    <label id="quantity">Quantity</label>
+                    <input type="type" name="quantity" value="" id="quantity-input" placeholder="Quantity">
+                </div>
+
+                <div class="trade-form">
+                    <label id="trade-price">Trade Price</label>
+                    <input type="type" name="trade-price" value="" id="trade-price-input" placeholder="Trade Price">
+                </div>
+                
+                <div class="trade-form">
+                    <label id="date-input">Trade Date</label>
+                    <input type="type" name="trade-date" value="" id ="trade-date-input" placeholder="YYYY/MM/DD">
+                </div>
+                
+                <div class="trade-form">
+                    <button id="trade-submit-button">Submit</button>
+                </div>
+            </div>
+        </section>
 
 
-			<div class = "col-4">Sign up  / Login
-			</div>
+        <!--COINS-->
 
-		</header>
+        <section class="coins-area">
 
-		<!-- wallet -->
-		<div class = "row" id = 'wallet-name'>Wallet</div>
+            <h1 class="subheader">MY COINS</h1>
 
-		<div class = "row" id = 'wallets-row'>
+        <div class="my-coins">
 
-		
-			<div class = 'col-2' id = "usd-wallet">$USD
-			</div>
+            <!-- Coins Header Row -->
+            <h3 class="coins-header">Coin</h3>
+            <h3 class="coins-header">Quantity</h3>
+            <h3 class="coins-header">Value</h3>
+            <h3 class="coins-header">Average Cost</h3>
+            <h3 class="coins-header">Current Price</h3>
+            <h3 class="coins-header">24hr% Change</h3>
+            <h3 class="coins-header">24hr$ Change</h3>
+            <h3 class="coins-header">Total % Change</h3>
+            <h3 class="coins-header">Total $ Change</h3>
+            <h3 class="coins-header">Coin Button</h3>
 
-			<div = class = 'col-2' id = "btc-wallet">BTC
-			</div>
+            <!-- Coins Value Row -->
+            <div class="coins-value" id="coin-type"></div>
+            <div class="coins-value">17</div>
+            <div class="coins-value">$187,000</div>
+            <div class="coins-value">$1,164</div>
+            <div class="coins-value">$11,500</div>
+            <div class="coins-value">$1.5%</div>
+            <div class="coins-value">$542</div>
+            <div class="coins-value">$1,642</div>
+            <div class="coins-value">$160,100</div>
 
-			<div class = 'col-2' id = "percent-wallet">+217%
-			</div>
+        </div>
 
-			<div = class = 'col-2' id = "dollar-wallet">+$170,000
-			</div>
+        </section>
 
-			<div class = 'col-2' id = "24%-wallet">+2.7%
-			</div>
+        <footer>
+            <h1>Footer Area</h1>
+        </footer>
 
-			<div = class = 'col-2' id = "24$-wallet">+$1,123
-			</div>
-
-		</div>
-
-		<!-- submit coin area -->
-		<div class = "row" id = 'trade-name'>Trade</div>
-		<div class = "row form-row" id = "search-row">
-			<div class = "col-1">
-				<label id = "trade">Trade Type
-				</label>
-				<select class = "select form-control" id="trade-input">
-					<option value ='buy'>Buy</option>
-					<option value ='sell'>Sell</option>
-				</select>	
-			</div>
-
-			<div class = "col-2">
-				<label id = "exchange">Exchange
-				</label>
-				<select class = 'select form-control' id= 'exchange-input'>
-					<option value = 'Coinbase'>Coinbase</option>
-					<option value = 'Gdax'>GDAX</option>
-					<option value = 'Binance'>Binance</option>
-					<option value = 'Bittrex'>Bittrex</option>
-					<option value = 'Kraken'>Kraken</option>
-					<option value = 'Gemini'>Gemini</option>
-					<option value = 'Kucoin'>Kucoin</option>
-					<option value = 'Cryptopia'>Cryptopia</option>
-					<option value = 'HitBTC'>HitBTC</option>
-					<option value = 'CoinExchange'>CoinExchange</option>
-				</select>
-			</div>
-
-			<div class = "col-2">
-				<label id = "coin">Coin
-				</label>
-				<select class = "select form-control" id = "coin-input">
-					<option value ='Bitcoin'>Bitcoin</option>
-					<option value ='Ethereum'>Ethereum</option>
-					<option value ='Litecoin'>Litecoin</option>
-					<option value ='Bitcoin Cash'>Bitcoin Cash</option>
-	
-				</select>
-			</div>
-
-			<div class = "col-2">
-				<label id = "quantity">Quantity
-				</label>
-				<input class = "form-control search-area" type="type" name="quantity" value="" id = "quantity-input" placeholder="Quantity">
-			</div>
-
-			<div class = "col-1">
-				<label id = "trade-price">Trade Price
-				</label>
-				<input class = "form-control search-area" type="type" name="trade-price" value="" id = "trade-price-input" placeholder="Trade Price">
-			</div>
-
-			<div class = "col-2">
-				<label class = "date-input">Trade Date
-				</label>
-				<input class = "form-control search-area" type="type" name="trade-date" value="" id = "trade-date-input" placeholder="YYYY/MM/DD">
-			</div>
-
-			<div class = 'col-2'>
-				<button class = 'btn btn-outline-dark' id = 'trade-submit-button'>Submit
-				</button>
-			</div>
-		</div>
-
-		<div class="row"></div>
-			<div id = "portfolio-row"></div>
-			<table class="table">
-				<thead>
-					<tr>			
-						<th>Coin</th>
-						<th>Quantity</th>
-						<th>Value</th>
-						<th>Average Cost</th>
-						<th>Current Price</th>
-						<th>24hr% Change</th>
-						<th>24hr$ Change</th>
-						<th>Total % Change</th>
-						<th>Total $ Change</th>
-						<th>Coin Button</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<th scope="row">hard code coin</th>
-						<td>17</td>
-						<td>$187,000</td>
-						<td>$1,164</td>
-						<td>$11,500</td>
-						<td>1.5%</td>
-						<td>$542</td>
-						<td>$1,624</td>
-						<td>$160,000</td>
-						<td>Button</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<div id="stock-chart" style="width:100%; height:400px;"></div>
-
-<!-- 		<div class = 'row' id = 'portfolio-row'>
-			<div class = 'col-1' id = 'coin-output'>Coin Here
-			</div>
-
-			<div class = 'col-1' id = 'quantity-output'>Quantity Here
-			</div>			
-
-			<div class = 'col-1' id = 'value-output'>Value Here
-			</div>
-
-			<div class = 'col-1' id = 'current-price-output'>Current Price Here
-			</div>
-
-			<div class = 'col-1' id = '24hr%-change-output'>24hr % Change
-			</div>
-
-			<div class = 'col-1' id = 'total$-change-output'>Total % Change
-			</div>
-
-			<div class = 'col-1' id = '24hr$-change-output'>24hr $ Change
-			</div>
-
-			<div class = 'col-1' id = 'total$-change-output'>Total $ Change
-			</div>			
-
-			<div class = 'col-1' id = 'value-output'>View/Trade Button
-			</div>
-
-			<div class = 'col-1' id = 'current-price-output'>Delete Button?
-			</div>
-
-			<div class = 'col-1' id = '24hr-change-output'>24hr % Change
-			</div>
-
-			<div class = 'col-1' id = 'total-change-output'>Total % Change
-			</div>
-
-		</div> -->
-
-		<div class = "row" id = "main-footer">
-			<div class = "col-4">
-			</div>
-			<div class = "col-4">InCrypt 2018
-			</div>
-			<div class = "col-4">
-			</div>
-		</div>		
-
-	</div>
-
-	<script src="js/api.js" type="text/javascript"></script>
-</body>
+        <script src="./js/script.js"></script>
+    
+    </body>
+</html>
