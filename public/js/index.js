@@ -62,11 +62,15 @@ $(document).ready( function() {
 
         // let value = coin.Data.total_quantity * currentPrice;
 
-        
+        let coinPage = coinData.coin;
+        let coinLink = "<a href=" + coinPage + ".html</a>";
+        console.log("coinLink is " + coinLink);
         let averageCost;
         // let currentPrice = 
         var newTr = $("<tr>");
         newTr.addClass("coin-dynamic");
+        newTr.attr('<a> href', "www.google.com");
+        
         newTr.append("<td>" + coinData.coin + "</td>");
         newTr.append("<td> " + coinData.total_quantity + "</td>");
 
