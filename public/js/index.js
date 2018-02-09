@@ -148,6 +148,10 @@ $(document).ready( function() {
 
 
 
+    $("#bitcoin-button").on("click", function(){
+        
+        
+    }
 
 
 
