@@ -1,3 +1,4 @@
+DROP DATABASE cryptos_db;
 CREATE DATABASE cryptos_db;
 
 USE cryptos_db;

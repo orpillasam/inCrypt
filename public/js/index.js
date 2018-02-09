@@ -62,21 +62,21 @@ $(document).ready( function() {
         let value = coin.Data.total_quantity * currentPrice;
 
         
-        let averageCost = 
+        let averageCost;
         // let currentPrice = 
         var newTr = $("<tr>");
         newTr.data("author", coinData);
         newTr.append("<td>" + coinData.coin + "</td>");
         newTr.append("<td> " + coinData.total_quantity + "</td>");
 
-        newTr.append("<td> " + value + "</td>");
-        newTr.append("<td> " + averageCost + "</td>");
+        // newTr.append("<td> " + value + "</td>");
+        // newTr.append("<td> " + averageCost + "</td>");
 
-        newTr.append("<td> " + currentPrice + "</td>");
-        newTr.append("<td> " + (24hour price change) + "</td>");
-        newTr.append("<td> " + (24hour % change) + "</td>");
-        newTr.append("<td> " + (month price change) + "</td>");
-        newTr.append("<td> " + (month % change)  + "</td>");
+        // newTr.append("<td> " + currentPrice + "</td>");
+        // newTr.append("<td> " + (24hour price change) + "</td>");
+        // newTr.append("<td> " + (24hour % change) + "</td>");
+        // newTr.append("<td> " + (month price change) + "</td>");
+        // newTr.append("<td> " + (month % change)  + "</td>");
     
 
   
