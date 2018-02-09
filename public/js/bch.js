@@ -17,7 +17,7 @@ $(document).ready( function() {
 
 
 	//on click commands for each button 
-	$(document).on("click", "button.delete", deleteTrade);
+	// $(document).on("click", "button.delete", deleteTrade);
 	// $(document).on("click", "button.complete", toggleComplete);
 	// $(document).on("click", ".trade-item", editTrade);
 	// $(document).on("keyup", ".trade-item", finishEdit);

@@ -2,16 +2,21 @@
     background-color: #343a40;
     color: white;
     text-decoration: none;
-};
+}
 
 a:link {
 	text-decoration: none;
-	color: white;
+    color: #C5C6C7;
 
-};
+}
 
 a:visted {
 	text-decoration: none;
-	color: white;
+    color: #C5C6C7;
 
-};
+}
+
+.coin-link {
+    color: #C5C6C7;
+}
+
