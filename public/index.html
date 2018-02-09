@@ -8,8 +8,9 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cairo|Maven+Pro" rel="stylesheet">
         <link rel="stylesheet" href="css/reset.css"> 
-        <link rel="stylesheet" href="css/dynamic.css">
+
         <link rel="stylesheet" href="css/main-style.css" type="text/css" media="all">
+                <link rel="stylesheet" href="css/dynamic.css">
        <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     	<script src="js/ccc-streamer-utilities.js"></script>
@@ -21,7 +22,7 @@
 
         <!--HEADER-->
         <header class="header-area">
-            <div class="logo"><img src="./assets/logos/asset-5.svg" alt="inCrypt logo"></div>
+            <div class="logo" align="center"><a href= index.html><img src="./assets/logos/asset-5.svg" alt="inCrypt logo"></a></div>
             <div class="exchange-rate">EMPTY FOR NOW</div>
             <div class="user-login">SIGN UP | LOGIN</div>
         </header>
@@ -40,7 +41,7 @@
 
                 <div class="wallet-data">
                     <h3 class="wallet-header">Portfolio Value (BTC)</h3>
-                    <p class="wallet-value" id="btc-wallet">&#x0e3f </p>
+                    <p class="wallet-value" id="btc-wallet"></p>
                 </div>
 
                 <div class="wallet-data">
@@ -122,8 +123,8 @@
                     <input type="type" name="trade-date" value="" id ="trade-date-input" placeholder="YYYY/MM/DD">
                 </div>
                 
-                <div class="trade-form">
-                    <button id="trade-submit-button">Submit</button>
+                <div class="trade-form" id="trade-button-row">
+                    <button id="trade-submit-button">SUBMIT</button>
                 </div>
             </div>
         </section>
@@ -131,43 +132,74 @@
 
         <!--COINS-->
 
-        <!-- <section class="coins-area"> -->
-        <section>
+        <section class="coins-area">
 
             <h1 class="subheader">MY COINS</h1>
-            <div id="portfolio-row">
-                <!-- <table class="my-coins"> -->
-                <table>
-                    <thead>
-                        <tr>                
-                            <th class="coins-header">Coin</th>
-                            <th class="coins-header">Quantity</th>
-                            <th class="coins-header">Value</th>
-                            <th class="coins-header">Average Cost</th>
-                            <th class="coins-header">Current Price</th>
-                            <th class="coins-header">24hr% Change<th>
-                            <th class="coins-header">24hr$ Change</th>
-                            <th class="coins-header">Total % Change</th>
-                            <th class="coins-header">Total $ Change</th>
-                            <th class="coins-header">Coin Button</th>
-                        </tr>
-                    </thead>
-                    <tbody class= "coins-value">
-                        <!-- <tr>
-                            <th class="coins-value" id="coin-type"></th>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                            <td class="coins-value"></td>
-                        </tr>  -->
-                    </tbody>
-                
-                </table>
-            </div>
+
+        <div class="my-coins">
+
+            <!-- Coins Header Row -->
+            <h3 class="coins-header">Coin</h3>
+            <h3 class="coins-header">Quantity</h3>
+            <h3 class="coins-header">Value</h3>
+            <h3 class="coins-header">Average Cost</h3>
+            <h3 class="coins-header">Current Price</h3>
+            <h3 class="coins-header">24hr% Change</h3>
+            <h3 class="coins-header">24hr$ Change</h3>
+            <h3 class="coins-header">Month % Change</h3>
+            <h3 class="coins-header">Month $ Change</h3>
+            <h3 class="coins-header">Coin Button</h3>
+
+            <!-- Bitcoins Value Row -->
+            <div class="coins-value" id="bitcoin-type"></div>
+            <div class="coins-value" id="bitcoin-qty"></div>
+            <div class="coins-value" id="bitcoin-value"></div>
+            <div class="coins-value" id="bitcoin-avg-cost"></div>
+            <div class="coins-value" id="bitcoin-cur-price"></div>
+            <div class="coins-value" id="bitcoin-24-dol"></div>
+            <div class="coins-value" id="bitcoin-24-per"></div>
+            <div class="coins-value" id="bitcoin-month-dol"></div> 
+            <div class="coins-value" id="bitcoin-month-per"></div>           
+            <div class="coins-value"><a class='coin-link' href="BTC.html" id="bitcoin-button">Bitcoin</a></div>
+
+            <!-- Litecoins Value Row -->
+            <div class="coins-value" id="litecoin-type"></div>
+            <div class="coins-value" id="litecoin-qty"></div>
+            <div class="coins-value" id="litecoin-value"></div>
+            <div class="coins-value" id="litecoin-avg-cost"></div>
+            <div class="coins-value" id="litecoin-cur-price"></div>
+            <div class="coins-value" id="litecoin-24-dol"></div>
+            <div class="coins-value" id="litecoin-24-per"></div>
+            <div class="coins-value" id="litecoin-month-dol"></div>
+            <div class="coins-value" id="litecoin-month-per"></div>            
+            <div class="coins-value"><a class='coin-link' href="LTC.html" id="litecoin-button">Litecoin</a></div>
+
+            <!-- Ethereum Value Row -->
+            <div class="coins-value" id="ethereum-type"></div>
+            <div class="coins-value" id="ethereum-qty"></div>
+            <div class="coins-value" id="ethereum-value"></div>
+            <div class="coins-value" id="ethereum-avg-cost"></div>
+            <div class="coins-value" id="ethereum-cur-price"></div>
+            <div class="coins-value" id="ethereum-24-dol"></div>
+            <div class="coins-value" id="ethereum-24-per"></div>
+            <div class="coins-value" id="ethereum-month-dol"></div> 
+            <div class="coins-value" id="ethereum-month-per"></div>            
+            <div class="coins-value"><a class='coin-link' href="ETH.html" id="ethereum-button">Ethereum</a></div>
+
+            <!-- Bitcoin Cash Value Row -->
+            <div class="coins-value" id="bitcoin-cash-type"></div>
+            <div class="coins-value" id="bitcoin-cash-qty"></div>
+            <div class="coins-value" id="bitcoin-cash-value"></div>
+            <div class="coins-value" id="bitcoin-cash-avg-cost"></div>
+            <div class="coins-value" id="bitcoin-cash-cur-price"></div>
+            <div class="coins-value" id="bitcoin-cash-24-dol"></div>
+            <div class="coins-value" id="bitcoin-cash-24-per"></div>
+            <div class="coins-value" id="bitcoin-cash-month-dol"></div> 
+            <div class="coins-value" id="bitcoin-cash-month-per"></div>          
+            <div class="coins-value"><a  class='coin-link' href="BCH.html" id="bitcoin-cash-button">Bitcoin Cash</a></div>
+
+        </div>
+
         </section>
 
         <footer>
