@@ -10,4 +10,19 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname, "../public/coins.html"));
     });
 
+    app.get("/btc-coins", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/coins.html"));
+    });
+
+    app.get("/ltc-coins", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/coins.html"));
+    });
+
+    app.get("/eth-coins", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/coins.html"));
+    });
+
+    app.get("/bch-coins", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/coins.html"));
+    });
 }
