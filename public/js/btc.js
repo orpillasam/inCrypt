@@ -5,8 +5,8 @@ $(document).ready( function() {
     const coinList = $("#coin-body");
     const coinContainer = $("#portfolio-row");
 
-	const tradeList = $("#trade-body");
-	const tradeContainer = $("#trades-row");
+	const tradeList = $("tbody");
+	const tradeContainer = $(".trades-row");
 	let historyArray = []
 	const coin = 'Bitcoin';
 	getTrades();
