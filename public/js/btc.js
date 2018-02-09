@@ -8,7 +8,7 @@ $(document).ready( function() {
 	const tradeList = $("#trade-body");
 	const tradeContainer = $("#trades-row");
 	let historyArray = []
-	const coin = 'Litecoin';
+	const coin = 'Bitcoin';
 	getTrades();
 	getCoins();
 	let currentTime = moment();
@@ -103,6 +103,9 @@ $(document).ready( function() {
     //appends a new trade row in the table
     //called in function getTrades
     function createTradeRow(tradeData) {
+
+        let tradeCost = (tradeData.trade_quantity * trade_quantity).toFixed(2);
+        console.log("trade cost is " + tradeCost);
         var newTr = $("<tr>");
         newTr.data("trades", tradeData);
         newTr.append("<td>" + tradeData.trade_type + "</td>");
@@ -110,13 +113,13 @@ $(document).ready( function() {
         newTr.append("<td>" + tradeData.exchange_type + "</td>");
         newTr.append("<td> " + tradeData.trade_quantity + "</td>");
         newTr.append("<td> " + tradeData.trade_price + "</td>");
-		newTr.append("<td> " + tradeData.trade_price + "</td>");
-		newTr.append("<td> Proceeds </td>");
-		newTr.append("<td> <button class='edit btn btn-default'>Edit</button>");
-        newTr.append("<td> <button class='delete btn btn-default'>Delete</button>");
+		newTr.append("<td> " + tradeCost + "</td>");
+		// newTr.append("<td> Proceeds </td>");
+		// newTr.append("<td> <button class='edit btn btn-default'>Edit</button>");
+  //       newTr.append("<td> <button class='delete btn btn-default'>Delete</button>");
 
     
-		newTr.find("button.delete").data("id", coin.id);
+		// newTr.find("button.delete").data("id", coin.id);
 		// $newInputRow.find("input.edit").css("display", "none");
 
         return newTr;
@@ -192,7 +195,7 @@ function renderEmpty() {
     // a function to get the table "coins" from the database cryptos_db;
     function getCoins() {
         console.log("checking if getCoins works");
-        $.get("/api/coins/" + "Litecoin", function(data){
+        $.get("/api/coins/" + "Bitcoin", function(data){
             var rowsToAdd = [];
             for (var i = 0; i <data.length; i++) {
                 rowsToAdd.push(createCoinRow(data[i]));
@@ -203,11 +206,13 @@ function renderEmpty() {
     
     };
 
+
     //appends a new coin row in the table
     function createCoinRow(coinData) {
+
+
         
         var newTr = $("<tr>");
-        newTr.data("author", coinData);
         newTr.append("<td>" + coinData.coin + "</td>");
         newTr.append("<td> " + coinData.total_quantity + "</td>");
         newTr.append("<td> " + coinData.coin_value + "</td>");
