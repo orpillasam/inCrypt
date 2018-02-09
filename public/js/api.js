@@ -38,7 +38,7 @@ $(document).ready( function() {
         // let newCurrentPriceArray = [];
         // let newDayPriceArray = [];
         // let newMonthPriceArray = [];
-        // let coinBTC = "BTC";
+        let coinBTC = "BTC";
         let coinLTC = "LTC";
         let coinETH = "ETH";
         let coinBCH = "BCH";
@@ -67,10 +67,10 @@ $(document).ready( function() {
         // let queryURL3BCHWeek = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinBCH + "&tsyms=" + conversionType + "&ts=" + oneWeekAgo;
         
         //query to get the exchange rate of a coin, in a certain conversion type, one month ago from query date
-        let queryURL4BTCMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
-        let queryURL4LTCMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
-        let queryURL4ETHMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
-        let queryURL4ECHMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coin + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
+        let queryURL4BTCMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinBTC + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
+        let queryURL4LTCMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinLTC + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
+        let queryURL4ETHMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinETH + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
+        let queryURL4BCHMonth = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinBCH + "&tsyms=" + conversionType + "&ts=" + oneMonthAgo;
 
 
         //***************************current price queries****************************//
@@ -83,7 +83,7 @@ $(document).ready( function() {
         }).done(function(response){
             console.log("url1 response is " + response);
             currentPriceBTC = response["USD"]
-            newCurrentPriceArray.push(currentPriceBTC);
+            // newCurrentPriceArray.push(currentPriceBTC);
             console.log("BTC Current Price: " + currentPriceBTC);
             // dayChangePercent(currentPriceBTC);
 
@@ -96,7 +96,7 @@ $(document).ready( function() {
         }).done(function(response){
             currentPriceLTC = response["USD"]
             console.log("LTC Current Price: " + currentPriceLTC);
-            newCurrentPriceArray.push(currentPriceLTC);
+            // newCurrentPriceArray.push(currentPriceLTC);
             // dayChangePercent(currentPriceLTC);
         });
 
@@ -107,7 +107,7 @@ $(document).ready( function() {
         }).done(function(response){
             currentPriceETH = response["USD"]
             console.log("ETH Current Price: " + currentPriceETH);
-            newCurrentPriceArray.push(currentPriceETH);
+            // newCurrentPriceArray.push(currentPriceETH);
             // dayChangePercent(currentPriceETH);
         });
 
@@ -118,7 +118,7 @@ $(document).ready( function() {
         }).done(function(response){
             currentPriceBCH = response["USD"]
             console.log("BCH Current Price: " + currentPriceBCH);
-            newCurrentPriceArray.push(currentPriceBCH);
+            // newCurrentPriceArray.push(currentPriceBCH);
             // dayChangePercent(currentPriceBCH);
         });       
 
@@ -131,7 +131,7 @@ $(document).ready( function() {
             method: "GET"
         }).done(function(response){
             oneDayBTC = response["BTC"]["USD"]
-            newDayPriceArray.push(oneDayBTC);
+            // newDayPriceArray.push(oneDayBTC);
             console.log("BTC Price 24 hrs Ago: " + oneDayBTC);
         });
 
@@ -141,7 +141,7 @@ $(document).ready( function() {
             method: "GET"
         }).done(function(response){
             oneDayLTC = response["LTC"]["USD"]
-            newDayPriceArray.push(oneDayLTC);
+            // newDayPriceArray.push(oneDayLTC);
             console.log("LTC Price 24 hrs Ago: " + oneDayLTC);
         });
 
@@ -151,7 +151,7 @@ $(document).ready( function() {
             method: "GET"
         }).done(function(response){
             oneDayETH = response["ETH"]["USD"]
-            newDayPriceArray.push(oneDayETH);
+            // newDayPriceArray.push(oneDayETH);
             console.log("ETH Price 24 hrs Ago: " + oneDayETH);
         });
 
@@ -161,7 +161,7 @@ $(document).ready( function() {
             method: "GET"
         }).done(function(response){
             oneDayBCH = response["BCH"]["USD"]
-            newDayPriceArray.push(oneDayBCH);
+            // newDayPriceArray.push(oneDayBCH);
             console.log("BCH Price 24 hrs Ago: " + oneDayBCH);
         });       
 
@@ -182,7 +182,7 @@ $(document).ready( function() {
             url: queryURL4BTCMonth,
             method: "GET"
         }).done(function(response){
-            let oneMonthBTC = response["BTC"]["USD"]
+            oneMonthBTC = response["BTC"]["USD"]
             console.log("BTC Price 1 Month Ago: " + oneMonthBTC);
         });
       
@@ -191,7 +191,7 @@ $(document).ready( function() {
             url: queryURL4LTCMonth,
             method: "GET"
         }).done(function(response){
-            let oneMonthLTC = response["LTC"]["USD"]
+            oneMonthLTC = response["LTC"]["USD"]
             console.log("LTC Price 1 Month Ago: " + oneMonthLTC);
         });
 
@@ -200,40 +200,41 @@ $(document).ready( function() {
             url: queryURL4ETHMonth,
             method: "GET"
         }).done(function(response){
-            let oneMonthETH = response["ETH"]["USD"]
+            oneMonthETH = response["ETH"]["USD"]
             console.log("ETH Price 1 Month Ago: " + oneMonthETH);
         });
 
         //BCH
         $.ajax({
-            url: queryURL4BTCMonth,
+            url: queryURL4BCHMonth,
             method: "GET"
         }).done(function(response){
-            let oneMonthBCH = response["BCH"]["USD"]
+            oneMonthBCH = response["BCH"]["USD"]
             console.log("BCH Price 1 Month Ago: " + oneMonthBCH);
         });  
 
-        console.log(newCurrentPriceArray);
+        // console.log(newCurrentPriceArray);
         // currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH
         // oneMonthBTC, oneMonthLTC, oneMonthETH, oneMonthBCH
         // BTCQuantity, LTCQuantity, ETHQuantity, BCHQuantity
-        setTimeout(function(){getWallet();}, 2000);
+        setTimeout(function(){getWallet();}, 3000);
 
         function getWallet(){
-            let walletTotal = ((currentPriceBTC* BTCQuantity) + (currentPriceLTC * LTCQuantity) + (currentPriceETH + ETHQuantity) + (currentPriceBCH + BCHQuantity)).toFixed(2);
+            let walletTotal = ((currentPriceBTC* BTCQuantity) + (currentPriceLTC * LTCQuantity) + (currentPriceETH * ETHQuantity) + (currentPriceBCH * BCHQuantity)).toFixed(2);
             $("#usd-wallet").text("$" + walletTotal);
             console.log("btc is " + BTCQuantity);
     
             let walletBTCTotal = (walletTotal / currentPriceBTC).toFixed(4);
-            $("#btc-wallet").text("&#x0e3f" + walletBTCTotal);
+            $("#btc-wallet").append(walletBTCTotal);
             
-            console.log("first in array is " + newCurrentPriceArray[0]);
+
             console.log("wallet is " + walletTotal);
-            console.log("test wallet " + newCurrentPriceArray[0] * BTCQuantity);
-            let walletDayTotal = ((oneDayBTC * BTCQuantity) + (oneDayLTC * LTCQuantity) + (oneDayETH + ETHQuantity) + (oneDayBCH + BCHQuantity));
+            // console.log("test wallet " + newCurrentPriceArray[0] * BTCQuantity);
+            let walletDayTotal = ((oneDayBTC * BTCQuantity) + (oneDayLTC * LTCQuantity) + (oneDayETH * ETHQuantity) + (oneDayBCH * BCHQuantity));
             console.log('wallet day total is ' + walletDayTotal);
-            let walletMonthTotal = ((oneMonthBTC * BTCQuantity) + (oneMonthLTC * LTCQuantity) + (oneMonthETH + ETHQuantity) + (oneMonthBCH + BCHQuantity));
-    
+
+            let walletMonthTotal = ((oneMonthBTC * BTCQuantity) + (oneMonthLTC * LTCQuantity) + (oneMonthETH * ETHQuantity) + (oneMonthBCH * BCHQuantity));
+            console.log("month wallet is " + walletMonthTotal);
 
             let walletDayChange = (walletTotal - walletDayTotal).toFixed(2);
             $("#24dollar-wallet").text("$" + walletDayChange);
