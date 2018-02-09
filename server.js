@@ -6,7 +6,7 @@ const moment = require("moment");
 const app = express();
 const server = require('http').Server(app);
 const io = require("socket.io")(server);
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 const db = require("./models");
 
