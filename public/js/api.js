@@ -35,10 +35,10 @@ $(document).ready( function() {
         let currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH;
         let oneDayBTC, oneDayLTC, oneDayETH, oneDayBCH;
         let oneMonthBTC, oneMonthLTC, oneMonthETH, oneMonthBCH;
-        let newCurrentPriceArray = [];
-        let newDayPriceArray = [];
-        let newMonthPriceArray = [];
-        let coinBTC = "BTC";
+        // let newCurrentPriceArray = [];
+        // let newDayPriceArray = [];
+        // let newMonthPriceArray = [];
+        // let coinBTC = "BTC";
         let coinLTC = "LTC";
         let coinETH = "ETH";
         let coinBCH = "BCH";
@@ -225,7 +225,7 @@ $(document).ready( function() {
             console.log("btc is " + BTCQuantity);
     
             let walletBTCTotal = (walletTotal / currentPriceBTC).toFixed(4);
-            $("#btc-wallet").text("$" + walletBTCTotal);
+            $("#btc-wallet").text("&#x0e3f" + walletBTCTotal);
             
             console.log("first in array is " + newCurrentPriceArray[0]);
             console.log("wallet is " + walletTotal);

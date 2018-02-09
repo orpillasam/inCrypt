@@ -1,3 +1,4 @@
+
 DROP DATABASE cryptos_db;
 CREATE DATABASE cryptos_db;
 
@@ -17,25 +18,12 @@ CREATE TABLE trades (
 	PRIMARY KEY(id)
 );
 
-CREATE TABLE currentprice (
-	id int(11) AUTO_INCREMENT NOT NULL,
-	coin VARCHAR(255) NOT NULL,
-	current_price VARCHAR (255) NOT NULL,
-	createdAt DATE,
-	updatedAT DATE,
-	PRIMARY KEY (id)
-)
-
-
 CREATE TABLE coins (
 	id int(11) AUTO_INCREMENT NOT NULL,
 	coin VARCHAR(255) NOT NULL,
 	coin_symbol VARCHAR(10) NOT NULL,
 	total_quantity int(255) NOT NULL,
-	current_coin_price DECIMAL (10, 2) NOT NULL,
-	current_coin_value DECIMAL(10, 2) NOT NULL,
-	createAt DATE,
-	updatedAt DATE,
+	coin_value DECIMAL(10, 2) NOT NULL,
 	PRIMARY KEY(id)
 );
 
@@ -60,4 +48,4 @@ CREATE TABLE sessions (
 SELECT * FROM trades;
 SELECT * FROM coins;
 SELECT * FROM users;
-SELECT * FROM coins;
+
