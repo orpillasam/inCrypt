@@ -231,12 +231,13 @@ $(document).ready( function() {
             console.log("wallet is " + walletTotal);
             console.log("test wallet " + newCurrentPriceArray[0] * BTCQuantity);
             let walletDayTotal = ((oneDayBTC * BTCQuantity) + (oneDayLTC * LTCQuantity) + (oneDayETH + ETHQuantity) + (oneDayBCH + BCHQuantity));
-    
-            let walletMonthTotal = ((oneMonthBTC * BTCQuantity) + (oneMonthLTC * LTCQuantity) + (oneMonthTH + ETHQuantity) + (oneMonthBCH + BCHQuantity));
+            console.log('wallet day total is ' + walletDayTotal);
+            let walletMonthTotal = ((oneMonthBTC * BTCQuantity) + (oneMonthLTC * LTCQuantity) + (oneMonthETH + ETHQuantity) + (oneMonthBCH + BCHQuantity));
     
 
             let walletDayChange = (walletTotal - walletDayTotal).toFixed(2);
             $("#24dollar-wallet").text("$" + walletDayChange);
+            console.log("wallet day change is " + walletDayChange);
     
             let walletDayPercentChange = ((walletDayChange / walletTotal) * 100).toFixed(2);
             $("#24percent-wallet").text(walletDayPercentChange + "%")

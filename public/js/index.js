@@ -33,16 +33,17 @@ $(document).ready( function() {
 
 /************************  API Routes to the Database*************************/
 /*****************************************************************************/
-
+    getCoins();
 
     // a function to get the table "coins" from the database cryptos_db;
-    function getCoins(currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH) {
+    function getCoins() {
         console.log("checking if getCoins works");
         $.get("/api/coins", function(data){
+
             var rowsToAdd = [];
             var coinPriceArray = [];
             for (var i = 0; i <data.length; i++) {
-                rowsToAdd.push(createCoinRow(data[i], currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH));
+                rowsToAdd.push(createCoinRow(data[i]));
             }
             renderCoinList(rowsToAdd);
             console.log("rows to add are " + rowsToAdd);
@@ -59,13 +60,13 @@ $(document).ready( function() {
     function createCoinRow(coinData) {
         
 
-        let value = coin.Data.total_quantity * currentPrice;
+        // let value = coin.Data.total_quantity * currentPrice;
 
         
         let averageCost;
         // let currentPrice = 
         var newTr = $("<tr>");
-        newTr.data("author", coinData);
+        newTr.addClass("coin-dynamic");
         newTr.append("<td>" + coinData.coin + "</td>");
         newTr.append("<td> " + coinData.total_quantity + "</td>");
 
