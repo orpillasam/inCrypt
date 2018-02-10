@@ -35,9 +35,7 @@ $(document).ready( function() {
         let currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH;
         let oneDayBTC, oneDayLTC, oneDayETH, oneDayBCH;
         let oneMonthBTC, oneMonthLTC, oneMonthETH, oneMonthBCH;
-        // let newCurrentPriceArray = [];
-        // let newDayPriceArray = [];
-        // let newMonthPriceArray = [];
+
         let coinBTC = "BTC";
         let coinLTC = "LTC";
         let coinETH = "ETH";
@@ -223,18 +221,21 @@ $(document).ready( function() {
         function getCoinWallet(){
 
             //****************bitcoin**********************//
-            $("#bitcoin-qty").text(BTCQuanity);
+
+            $("#bitcoin-type").text("Bitcoin");
+
+            $("#bitcoin-qty").text(BTCQuantity);
 
 
-            let BTCValue = (currentBTC * BTCQuanity).toFixed(2);
+            let BTCValue = (currentPriceBTC * BTCQuantity).toFixed(2);
             $("#bitcoin-value").text("$" + BTCValue);
             console.log("BTC value is " + BTCValue);
 
-            let BTCAverage = (currentBTC / BTCQuantity).toFixed(2);
+            let BTCAverage = (currentPriceBTC / BTCQuantity).toFixed(2);
             $("#bitcoin-avg-cost").text("$" + BTCAverage)
             console.log("BTC average is " + BTCAverage)
 
-            $("#bitcoin-cur-price").text("$" + currentBTC);
+            $("#bitcoin-cur-price").text("$" + currentPriceBTC);
 
             let BTCDayTotal = (oneDayBTC * BTCQuantity);
             console.log("BTC day total is " + BTCDayTotal);
@@ -244,7 +245,7 @@ $(document).ready( function() {
             console.log("btc day change is " + BTCDayChange);
 
             let BTCDayPercentChange = ((BTCDayChange / BTCValue) * 100).toFixed(2);
-            $("bitcoin-24-per").text (BTCDayPercentChange + "%");
+            $("#bitcoin-24-per").text (BTCDayPercentChange + "%");
 
             let BTCMonthTotal = (oneMonthBTC * BTCQuantity);
             console.log("BTC month total is " + BTCMonthTotal);
@@ -254,21 +255,24 @@ $(document).ready( function() {
             console.log("btc month change is " + BTCMonthChange);
 
             let BTCMonthPercentChange = ((BTCMonthChange / BTCValue) * 100).toFixed(2);
-            $("bitcoin-month-per").text (BTCMonthPercentChange + "%");
+            $("#bitcoin-month-per").text (BTCMonthPercentChange + "%");
 
 
             //*************************litecoin*******************//
-            $("#litecoin-qty").text(LTCQuanity);
+            
+            $("#litecoin-type").text("Litecoin");
+            
+            $("#litecoin-qty").text(LTCQuantity);
 
-            let LTCValue = (currentLTC * LTCQuanity).toFixed(2);
+            let LTCValue = (currentPriceLTC * LTCQuantity).toFixed(2);
             $("#litecoin-value").text("$" + LTCValue);
             console.log("LTC value is " + LTCValue);
 
-            let LTCAverage = (currentLTC / LTCQuantity).toFixed(2);
+            let LTCAverage = (currentPriceLTC / LTCQuantity).toFixed(2);
             $("#litecoin-avg-cost").text("$" + LTCAverage)
             console.log("LTC average is " + LTCAverage)
 
-            $("#Litecoin-cur-price").text("$" + currentLTC);
+            $("#litecoin-cur-price").text("$" + currentPriceLTC);
 
             let LTCDayTotal = (oneDayLTC * LTCQuantity);
             console.log("LTC day total is " + LTCDayTotal);
@@ -278,7 +282,7 @@ $(document).ready( function() {
             console.log("ltc day change is " + LTCDayChange);
 
             let LTCDayPercentChange = ((LTCDayChange / LTCValue) * 100).toFixed(2);
-            $("litecoin-24-per").text (LTCDayPercentChange + "%");
+            $("#litecoin-24-per").text (LTCDayPercentChange + "%");
 
             let LTCMonthTotal = (oneMonthLTC * LTCQuantity);
             console.log("LTC month total is " + LTCMonthTotal);
@@ -288,23 +292,26 @@ $(document).ready( function() {
             console.log("Ltc month change is " + LTCMonthChange);
 
             let LTCMonthPercentChange = ((LTCMonthChange / LTCValue) * 100).toFixed(2);
-            $("litecoin-month-per").text (LTCMonthPercentChange + "%");
+            $("#litecoin-month-per").text (LTCMonthPercentChange + "%");
 
 
             //******************ethereum*********************//
-            $("#bitcoin-qty").text(ETHQuanity);
+            
+            $("#ethereum-type").text("Ethereum");
+            
+            $("#ethereum-qty").text(ETHQuantity);
 
-            let ETHValue = (currentETH * ETHQuanity).toFixed(2);
+            let ETHValue = (currentPriceETH * ETHQuantity).toFixed(2);
             $("#ethereum-value").text("$" + ETHValue);
             console.log("ETH value is " + ETHValue);
 
-            let ETHAverage = (currentETH / ETHQuantity).toFixed(2);
+            let ETHAverage = (currentPriceETH / ETHQuantity).toFixed(2);
             $("#ethereum-avg-cost").text("$" + ETHAverage)
             console.log("ETH average is " + ETHAverage)
 
-            $("#ethereum-cur-price").text("$" + currentETH);
+            $("#ethereum-cur-price").text("$" + currentPriceETH);
 
-            let ETHayTotal = (oneDayETH* ETHQuantity);
+            let ETHDayTotal = (oneDayETH* ETHQuantity);
             console.log("ETH day total is " + ETHDayTotal);
 
             let ETHDayChange = (ETHValue - ETHDayTotal).toFixed(2);
@@ -312,7 +319,7 @@ $(document).ready( function() {
             console.log("ETH day change is " + ETHDayChange);
 
             let ETHDayPercentChange = ((ETHDayChange / ETHValue) * 100).toFixed(2);
-            $("ethereum-24-per").text (ETHDayPercentChange + "%");
+            $("#ethereum-24-per").text (ETHDayPercentChange + "%");
 
             let ETHMonthTotal = (oneMonthETH * ETHQuantity);
             console.log("ETH month total is " + ETHMonthTotal);
@@ -322,42 +329,45 @@ $(document).ready( function() {
             console.log("ETH month change is " + ETHMonthChange);
 
             let ETHMonthPercentChange = ((ETHMonthChange / ETHValue) * 100).toFixed(2);
-            $("ethereum-month-per").text (ETHMonthPercentChange + "%");
+            $("#ethereum-month-per").text (ETHMonthPercentChange + "%");
 
 
 
             //**********************bitcoin cash*********************//
-            $("#bitcoincash-qty").text(BCHQuanity);
+            
+            $("#bitcoin-cash-type").text("Bitcoin Cash");
+            
+            $("#bitcoin-cash-qty").text(BCHQuantity);
 
-            let BCHValue = (currentBCH * BCHQuanity).toFixed(2);
-            $("#bitcoincash-value").text("$" + BCHValue);
+            let BCHValue = (currentPriceBCH * BCHQuantity).toFixed(2);
+            $("#bitcoin-cash-value").text("$" + BCHValue);
             console.log("BCH value is " + BCHValue);
 
-            let BCHAverage = (currentBCH / BCHQuantity).toFixed(2);
-            $("#bitcoincash-avg-cost").text("$" + BCHAverage)
+            let BCHAverage = (currentPriceBCH / BCHQuantity).toFixed(2);
+            $("#bitcoin-cash-avg-cost").text("$" + BCHAverage)
             console.log("BCH average is " + BCHAverage)
 
-            $("#bitcoincash-cur-price").text("$" + currentBCH);
+            $("#bitcoin-cash-cur-price").text("$" + currentPriceBCH);
 
             let BCHDayTotal = (oneDayBCH * BCHQuantity);
             console.log("BCH day total is " + BCHDayTotal);
 
             let BCHDayChange = (BCHValue - BCHDayTotal).toFixed(2);
-            $("#bitcoincash-24-dol").text("$" + BCHDayChange);
+            $("#bitcoin-cash-24-dol").text("$" + BCHDayChange);
             console.log("BCH day change is " + BCHDayChange);
 
             let BCHDayPercentChange = ((BCHDayChange / BCHValue) * 100).toFixed(2);
-            $("bitcoincash-24-per").text (BCHDayPercentChange + "%");
+            $("#bitcoin-cash-24-per").text (BCHDayPercentChange + "%");
 
             let BCHMonthTotal = (oneMonthBCH * BCHQuantity);
             console.log("BCH month total is " + BCHMonthTotal);
 
             let BCHMonthChange = (BCHValue - BCHMonthTotal).toFixed(2);
-            $("#bitcoincash-month-dol").text("$" + BCHMonthChange);
+            $("#bitcoin-cash-month-dol").text("$" + BCHMonthChange);
             console.log("BCH month change is " + BCHMonthChange);
 
             let BCHMonthPercentChange = ((BCHMonthChange / BCHValue) * 100).toFixed(2);
-            $("bitcoincash-month-per").text (BCHMonthPercentChange + "%");
+            $("#bitcoin-cash-month-per").text (BCHMonthPercentChange + "%");
 
         }
 
@@ -367,7 +377,7 @@ $(document).ready( function() {
             console.log("btc is " + BTCQuantity);
     
             let walletBTCTotal = (walletTotal / currentPriceBTC).toFixed(4);
-            $("#btc-wallet").append(walletBTCTotal);
+            $("#btc-wallet").append("<h3>&#x0e3f " + walletBTCTotal + "</h3>");
             
 
             console.log("wallet is " + walletTotal);
@@ -438,31 +448,7 @@ $(document).ready( function() {
         // changeCoin(currentPriceETC);
         // changeCoin(currentPriceBCH);
 
-// Get the modal
-var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 
 
 

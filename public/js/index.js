@@ -33,7 +33,7 @@ $(document).ready( function() {
 
 /************************  API Routes to the Database*************************/
 /*****************************************************************************/
-    getCoins();
+    // getCoins();
 
     // a function to get the table "coins" from the database cryptos_db;
     function getCoins() {
@@ -148,10 +148,6 @@ $(document).ready( function() {
 
 
 
-    $("#bitcoin-button").on("click", function(){
-        
-        
-    }
 
 
 
