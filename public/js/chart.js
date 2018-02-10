@@ -34,7 +34,7 @@ $.ajax({
 
 $(document).ready( function() {
 
-    var btcData = [["2018/02/08",7577.1],
+    var btcData = [
     [
     1518076800000,7694.96
     ],

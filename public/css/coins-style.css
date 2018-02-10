@@ -7,8 +7,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 250px auto 800px 800px auto 800px2fr;
+    grid-template-rows: auto auto auto auto auto auto 150px;
     justify-content: center;
+    grid-row-gap: 50px;
 }
 
 .header-area{
@@ -69,6 +70,10 @@ button {
     font-size: 40px;
     font-family: 'Cairo', sans-serif;
     background: rgba(255, 255, 255, 0.1);
+}
+
+.coin-chart-area {
+    padding: 5px;
 }
 
 label {
@@ -145,13 +150,12 @@ td {
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            grid-template-rows: 1fr 450px 300px 500px 1fr;
         }
 
         .header-area {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto 100px;
+            grid-template-rows: auto auto;
         }
 
         img, .logo {

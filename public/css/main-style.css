@@ -7,8 +7,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 250px 800px 800px 2fr 2fr;
+    grid-template-rows: auto auto auto auto 150px;
     justify-content: center;
+    grid-row-gap: 50px;
 }
 
 .header-area{
@@ -195,7 +196,6 @@ button {
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            grid-template-rows: 1fr 450px 450px 500px 1fr;
         }
 
         .header-area {
