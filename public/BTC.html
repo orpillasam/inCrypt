@@ -10,11 +10,13 @@
         <link rel="stylesheet" href="css/reset.css"> 
         <link rel="stylesheet" href="css/dynamic.css">
         <link rel="stylesheet" href="css/coins-style.css" type="text/css" media="all">
-       <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     	<script src="js/ccc-streamer-utilities.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/cryptosocket.js" type="text/javascript"></script>
+	    <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/cryptosocket.js" type="text/javascript"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+	    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
     </head>
     
     <body class="container">
@@ -22,7 +24,7 @@
         <!--HEADER-->
         <header class="header-area">
             <div class="logo" align="center"><a href= index.html><img src="./assets/logos/asset-5.svg" alt="inCrypt logo"></a></div>
-<!--             <div class="exchange-rate">EMPTY FOR NOW</div>
+            <!--<div class="exchange-rate">EMPTY FOR NOW</div>
             <div class="user-login">SIGN UP | LOGIN</div> -->
         </header>
 
@@ -178,7 +180,7 @@
             <div class="col-2">Trade History</div>
 
             <table class="table" >
-                
+                <thead>
                     <tr>            
                         <th>Type</th>
                         <th>Date</th>
@@ -187,6 +189,8 @@
                         <th>Trade Price</th>
                         <th>Cost</th>
                     </tr>
+                </thead>
+
                 <tbody>
                     <tr id = 'trade-body'>
                         <td>Buy</td>
@@ -195,17 +199,19 @@
                         <td>10</td>
                         <td>$3,503</td>
                         <td>$35,030</td>
+               
                     </tr>     
                 </tbody>
             </table>
         </section>
 
         <footer>
-            <h1>Footer Area</h1>
+            <h1>inCrypt 2018</h1>
         </footer>
 
         <script src="./js/btc.js"></script>
         <script src="./js/api-coin.js"></script>
+        <script src="js/chart.js" type="text/javascript"></script>
 
     </body>
 </html>

@@ -165,7 +165,7 @@
                 
                 <div class="trade-form">
                     <label id="date-input">Trade Date</label>
-                    <input type="type" name="trade-date" value="" id ="trade-date-input" placeholder="YYYY/MM/DD">
+                    <input type="type" name="trade-date" value="" id ="trade-date-input" placeholder="MM/DD/YYYY">
                 </div>
                 
                 <div class="trade-form" id="trade-button-row">
@@ -174,31 +174,33 @@
             </div>
         </section>
 
-        <section>
+        <section  class='trades-row'>
 
-            <div id = "trades-row" class="col-2">Trade History</div>
-
-            <table class="table" id='trades-row'>
-           
-                    <tr>            
-                        <th>Type</th>
-                        <th>Date</th>
-                        <th>Exchange</th>
-                        <th>Quantity</th>
-                        <th>Trade Price</th>
-                        <th>Cost</th>
-                    </tr>
-              
-                    <tr id = 'trade-body'>
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>     
-            </table>
-        </section>
+                <div class="col-2">Trade History</div>
+    
+                <table class="table" >
+                    <thead>
+                        <tr>            
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Exchange</th>
+                            <th>Quantity</th>
+                            <th>Trade Price</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id = 'trade-body'>
+                            <td>Buy</td>
+                            <td>1/1/2018</td>
+                            <td>Binance</td>
+                            <td>10</td>
+                            <td>$3,503</td>
+                            <td>$35,030</td>
+                        </tr>     
+                    </tbody>
+                </table>
+            </section>
 
       
 

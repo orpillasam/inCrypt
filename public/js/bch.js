@@ -13,7 +13,6 @@ $(document).ready( function() {
 	getCoins();
 	let currentTime = moment();
     console.log("current time is " + currentTime);
-    dayChangePercent();
 
 
 	//on click commands for each button 
@@ -104,7 +103,7 @@ $(document).ready( function() {
     //called in function getTrades
     function createTradeRow(tradeData) {
 
-        let tradeCost = (tradeData.trade_quantity * trade_quantity).toFixed(2);
+        let tradeCost = (tradeData.trade_quantity * tradeData.trade_quantity).toFixed(2);
         console.log("trade cost is " + tradeCost);
         var newTr = $("<tr>");
         newTr.data("trades", tradeData);
@@ -235,20 +234,6 @@ function renderEmpty() {
         }
     };
 
-    //function to create 24hr change in percent
-    function dayChangePercent() {
-        console.log('24 Hour Change: ' + ((currentPrice - oneDay)/oneDay)*100 + '%');
-    };
-
-    //function to create 24hr change in USD
-    function dayChangeDollar() {
-
-    };
-
-    //function to display total made on this coin
-    function totalCoinChange() {
-
-    };
 
     //function to alert if a field is empty when creating a new coin 
     function renderEmpty() {

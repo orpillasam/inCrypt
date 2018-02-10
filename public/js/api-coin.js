@@ -1,9 +1,6 @@
 $(document).ready( function() {
 
-
     getCoinQuantity();
-
-
 
     //function to get coin total value from database
     function getCoinQuantity() {
@@ -15,16 +12,21 @@ $(document).ready( function() {
             for (let m = 0; m <data.length; m++){
                 coinQuantityArray.push(data[m].total_quantity);
                 console.log(coinQuantityArray);
-
-
             }
         //passes the quantites into the getCoinAPI
         getCoinAPI(coinQuantityArray[0], coinQuantityArray[1], coinQuantityArray[2], coinQuantityArray[3]);
         });
     };
 
-
-    // getCoins();
+    function makePosNeg() {
+        var TDs = document.querySelectorAll('.plusmin');
+        
+        for (var i = 0; i < TDs.length; i++) {
+          var temp = TDs[i];
+          if (temp < 0) {temp.className = "negative";}
+          else {temp.className = "positive";}
+      }
+    };
 
 /***********************Outside API Calls ******************************/
 /***********************************************************************/
@@ -35,7 +37,10 @@ $(document).ready( function() {
         let currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH;
         let oneDayBTC, oneDayLTC, oneDayETH, oneDayBCH;
         let oneMonthBTC, oneMonthLTC, oneMonthETH, oneMonthBCH;
-
+        let BTCAverage = 9324.21
+        let LTCAverage = 137.50
+        let ETHAverage = 854.66
+        let BCHAverage = 2216.10
         let coinBTC = "BTC";
         let coinLTC = "LTC";
         let coinETH = "ETH";
@@ -73,7 +78,6 @@ $(document).ready( function() {
 
         //***************************current price queries****************************//
         
-
         //BTC 
         $.ajax({
             url: queryURLBTCcurrent,
@@ -119,7 +123,6 @@ $(document).ready( function() {
             // newCurrentPriceArray.push(currentPriceBCH);
             // dayChangePercent(currentPriceBCH);
         });       
-
 
         //***************************24 price queries****************************//
 
@@ -172,8 +175,6 @@ $(document).ready( function() {
         //     console.log("Price 1 Week Ago: " + oneWeek);
         // });
         
-
-
         //***************************month price queries****************************//
         //BTC
         $.ajax({
@@ -211,12 +212,8 @@ $(document).ready( function() {
             console.log("BCH Price 1 Month Ago: " + oneMonthBCH);
         });  
 
-        // console.log(newCurrentPriceArray);
-        // currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH
-        // oneMonthBTC, oneMonthLTC, oneMonthETH, oneMonthBCH
-        // BTCQuantity, LTCQuantity, ETHQuantity, BCHQuantity
-        setTimeout(function(){getWallet();}, 3000);
-        setTimeout(function(){getCoinWallet();}, 3000);
+        setTimeout(function(){getWallet();}, 2000);
+        setTimeout(function(){getCoinWallet();}, 2000);
 
         function getCoinWallet(){
 
@@ -226,12 +223,11 @@ $(document).ready( function() {
 
             $("#bitcoin-qty").text(BTCQuantity);
 
-
             let BTCValue = (currentPriceBTC * BTCQuantity).toFixed(2);
             $("#bitcoin-value").text("$" + BTCValue);
             console.log("BTC value is " + BTCValue);
 
-            let BTCAverage = (currentPriceBTC / BTCQuantity).toFixed(2);
+            // let BTCAverage = (BTCAverage * BTCQuantity).toFixed(2);
             $("#bitcoin-avg-cost").text("$" + BTCAverage)
             console.log("BTC average is " + BTCAverage)
 
@@ -255,7 +251,7 @@ $(document).ready( function() {
             console.log("btc month change is " + BTCMonthChange);
 
             let BTCMonthPercentChange = ((BTCMonthChange / BTCValue) * 100).toFixed(2);
-            $("#bitcoin-month-per").text (BTCMonthPercentChange + "%");
+            $("#bitcoin-month-per").text(BTCMonthPercentChange + "%");
 
 
             //*************************litecoin*******************//
@@ -268,7 +264,7 @@ $(document).ready( function() {
             $("#litecoin-value").text("$" + LTCValue);
             console.log("LTC value is " + LTCValue);
 
-            let LTCAverage = (currentPriceLTC / LTCQuantity).toFixed(2);
+            // let LTCAverage = (currentPriceLTC / LTCQuantity).toFixed(2);
             $("#litecoin-avg-cost").text("$" + LTCAverage)
             console.log("LTC average is " + LTCAverage)
 
@@ -292,7 +288,7 @@ $(document).ready( function() {
             console.log("Ltc month change is " + LTCMonthChange);
 
             let LTCMonthPercentChange = ((LTCMonthChange / LTCValue) * 100).toFixed(2);
-            $("#litecoin-month-per").text (LTCMonthPercentChange + "%");
+            $("#litecoin-month-per").text(LTCMonthPercentChange + "%");
 
 
             //******************ethereum*********************//
@@ -305,7 +301,7 @@ $(document).ready( function() {
             $("#ethereum-value").text("$" + ETHValue);
             console.log("ETH value is " + ETHValue);
 
-            let ETHAverage = (currentPriceETH / ETHQuantity).toFixed(2);
+            // let ETHAverage = (currentPriceETH / ETHQuantity).toFixed(2);
             $("#ethereum-avg-cost").text("$" + ETHAverage)
             console.log("ETH average is " + ETHAverage)
 
@@ -329,9 +325,7 @@ $(document).ready( function() {
             console.log("ETH month change is " + ETHMonthChange);
 
             let ETHMonthPercentChange = ((ETHMonthChange / ETHValue) * 100).toFixed(2);
-            $("#ethereum-month-per").text (ETHMonthPercentChange + "%");
-
-
+            $("#ethereum-month-per").text(ETHMonthPercentChange + "%");
 
             //**********************bitcoin cash*********************//
             
@@ -343,7 +337,7 @@ $(document).ready( function() {
             $("#bitcoin-cash-value").text("$" + BCHValue);
             console.log("BCH value is " + BCHValue);
 
-            let BCHAverage = (currentPriceBCH / BCHQuantity).toFixed(2);
+            // let BCHAverage = (currentPriceBCH / BCHQuantity).toFixed(2);
             $("#bitcoin-cash-avg-cost").text("$" + BCHAverage)
             console.log("BCH average is " + BCHAverage)
 
@@ -368,7 +362,8 @@ $(document).ready( function() {
 
             let BCHMonthPercentChange = ((BCHMonthChange / BCHValue) * 100).toFixed(2);
             $("#bitcoin-cash-month-per").text (BCHMonthPercentChange + "%");
-
+       
+            makePosNeg();
         }
 
         function getWallet(){
@@ -397,62 +392,13 @@ $(document).ready( function() {
 
     
             let walletMonthChange = (walletTotal - walletMonthTotal).toFixed(2);
-            $("#month-dollar-wallet").text("$" + walletMonthChange);
+            $("#month-dollar-wallet").text(walletMonthChange);
     
             let walletMonthPercentChange = ((walletMonthChange / walletTotal) *100).toFixed(2);
             $("#month-percent-wallet").text(walletMonthPercentChange + "%");
-            };
-    
-
-        // function getWallet(){
-        // let walletTotal = ((newCurrentPriceArray[0]* BTCQuantity) + (newCurrentPriceArray[1] * LTCQuantity) + (newCurrentPriceArray[2] + ETHQuantity) + (newCurrentPriceArray[3] + BCHQuantity)).toFixed(2);
-        // $("#usd-wallet").text("$" + walletTotal);
-        // console.log("btc is " + BTCQuantity);
-
-        // let walletBTCTotal = (walletTotal / newCurrentPriceArray[0]).toFixed(4);
-        // $("#btc-wallet").text("$" + walletBTCTotal);
-        
-        // console.log("first in array is " + newCurrentPriceArray[0]);
-        // console.log("wallet is " + walletTotal);
-        // console.log("test wallet " + newCurrentPriceArray[0] * BTCQuantity);
-        // let walletDayTotal = ((newDayPriceArray[0] * BTCQuantity) + (newDayPriceArray[1] * LTCQuantity) + (newDayPriceArray[2] + ETHQuantity) + (newDayPriceArray[3] + BCHQuantity));
-
-        // // let walletMonthTotal = ((oneMonthBTC * BTCQuantity) + (oneMonthLTC * LTCQuantity) + (oneMonthTH + ETHQuantity) + (oneMonthBCH + BCHQuantity));
-
-        // // let walletTotalBTC = (walletTotal / currentPriceBTC);
-        // // $("#btc-wallet").text("$" + walletTotalBTC);
-
-        // let walletDayChange = (walletTotal - walletDayTotal).toFixed(2);
-        // $("#24dollar-wallet").text("$" + walletDayChange);
-
-        // let walletDayPercentChange = ((walletDayChange / walletTotal) * 100).toFixed(2);
-        // $("#24percent-wallet").text(walletDayPercentChange + "%")
-
-        // // let walletMonthChange = walletTotal - walletMonthTotal;
-        // // $("#month-dollar-wallet").text("$" + walletDayChange);
-
-        // // let walletMonthPercentChange = ((walletMonthChange / walletTotal) *100).toFixed(2);
-        // // $("#month-percent-wallet").text(walletMonthPercentChange + "%");
-        // };
-
+            };  
+            makePosNeg();
     };
-
-       
-
-
-
-        // getCoins(currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH);
-
-        // changeCoin(currentPriceBTC);
-        // changeCoin(currentPriceLTC);
-        // changeCoin(currentPriceETC);
-        // changeCoin(currentPriceBCH);
-
-
-
-
-
-});
 
     // This function inserts a new  into our database and then updates the view
     function changeCoin(event) {
@@ -462,7 +408,6 @@ $(document).ready( function() {
         let coinSymbol = coinConversion[coinInput.val().trim()];
         console.log("coin symbol is " + coinSymbol);
         let coin = {
-
 
                 coin: coinInput.val().trim(),
                 coin_symbol: coinSymbol,
@@ -474,7 +419,8 @@ $(document).ready( function() {
         };
         
         console.log("checking if insertTrade works. Trade is " + trade);
-        $.post("/api/trades", trade);
+        $.post("/api/coins", trade);
         // $newItemInput.val("");
-
     };
+
+});
