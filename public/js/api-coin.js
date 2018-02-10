@@ -213,8 +213,8 @@ $(document).ready( function() {
             console.log("BCH Price 1 Month Ago: " + oneMonthBCH);
         });  
 
-        setTimeout(function(){getWallet();}, 5000);
-        setTimeout(function(){getCoinWallet();}, 5000);
+        setTimeout(function(){getWallet();}, 2000);
+        setTimeout(function(){getCoinWallet();}, 2000);
 
         function getCoinWallet(){
 
