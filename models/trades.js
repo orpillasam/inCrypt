@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes){
        exchange_type: DataTypes.STRING,
        trade_quantity: DataTypes.INTEGER,
        trade_price: DataTypes.DECIMAL,
-       trade_date: DataTypes.DATE
+       trade_date: DataTypes.STRING
     }, {
         timestamp: false
     });

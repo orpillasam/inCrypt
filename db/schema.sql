@@ -12,7 +12,7 @@ CREATE TABLE trades (
 	exchange_type VARCHAR(255) NOT NULL,
 	trade_quantity int(20) NOT NULL, 
 	trade_price DECIMAL(10, 2) NOT NULL,
-	trade_date DATE,
+	trade_date VARCHAR(255) NOT NULL,
 	createdAt DATE,
     updatedAt DATE,
 	PRIMARY KEY(id)
@@ -48,4 +48,7 @@ CREATE TABLE sessions (
 SELECT * FROM trades;
 SELECT * FROM coins;
 SELECT * FROM users;
+
+
+
 

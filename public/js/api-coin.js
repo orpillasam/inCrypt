@@ -62,7 +62,7 @@ $(document).ready( function() {
         let queryURL2LTC24 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinLTC + "&tsyms=" + conversionType + "&ts=" + oneDayAgo;
         let queryURL2ETH24 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinETH + "&tsyms=" + conversionType + "&ts=" + oneDayAgo;
         let queryURL2BCH24 = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinBCH + "&tsyms=" + conversionType + "&ts=" + oneDayAgo;
-        
+        console.log(queryURL2BTC24);
         // //query to get the exchange rate of a coin, in a certain conversion type, one week ago from query date
         // let queryURL3BTCWeek = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinBTC + "&tsyms=" + conversionType + "&ts=" + oneWeekAgo;
         // let queryURL3LTCWeek = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + coinLTC + "&tsyms=" + conversionType + "&ts=" + oneWeekAgo;
@@ -131,6 +131,7 @@ $(document).ready( function() {
             url: queryURL2BTC24,
             method: "GET"
         }).done(function(response){
+            console.log(response)
             oneDayBTC = response["BTC"]["USD"]
             // newDayPriceArray.push(oneDayBTC);
             console.log("BTC Price 24 hrs Ago: " + oneDayBTC);
@@ -212,8 +213,10 @@ $(document).ready( function() {
             console.log("BCH Price 1 Month Ago: " + oneMonthBCH);
         });  
 
+
         setTimeout(function(){getWallet();}, 2000);
         setTimeout(function(){getCoinWallet();}, 2000);
+
 
         function getCoinWallet(){
 
