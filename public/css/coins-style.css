@@ -7,7 +7,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 250px auto 800px 800px auto 2fr;
+    grid-template-rows: 250px auto 800px 800px auto 800px2fr;
     justify-content: center;
 }
 
@@ -15,7 +15,7 @@ body {
     padding-top: 20px;
 }
 
-.subheader {
+.subheader, .col-2 {
     font-family: 'Maven Pro', sans-serif;
     font-size: 32px;
     display: inline;
@@ -23,6 +23,15 @@ body {
     color: #66FCF1;
     padding: 5px 30px;
     letter-spacing: 2px;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 12px;
+    color: #45A29E;
+    border: none;
 }
 
 .wallet-data {
@@ -97,14 +106,34 @@ input[type=type] {
     margin: 0;
 }
 
-button {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    padding: 4px 6px;
-    font-size: 12px;
-    color: #45A29E;
-    border: none;
+.table {
+    width: 100%;
+    color: #C5C6C7;
+    border: 3px #66FCF1 solid;
+    border-radius: 10px;
+    border-collapse: separate;
+    font-size: 40px;
+    font-family: 'Cairo', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
 }
+
+th {
+    height: 50px;
+    padding-top: 15px;
+    color: #45A29E;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+td {
+    height: 20px;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 
 /* CSS GRID LAYOUT FOR MODERN BROWSERS: */
 @supports (grid-area: auto) {
