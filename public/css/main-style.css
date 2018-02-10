@@ -7,22 +7,12 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: auto auto auto auto 100px;
-    grid-row-gap: 50px;
+    grid-template-rows: 250px 800px 800px 2fr 2fr;
     justify-content: center;
 }
 
 .header-area{
     padding-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 150px 50px;
-    grid-row-gap: 10px;
-    text-align: right;
-}
-
-.logo {
-    grid-column: 1/3;
 }
 
 .subheader {
@@ -56,7 +46,7 @@ body {
     text-align: center;
 }
 
-.bitcoin-column, .litecoin-column, .ethereum-column, .bitcoin-cash-column {
+.coins-value {
     font-size: 24px;
     text-align: center;
     padding: 15px;
@@ -70,37 +60,6 @@ body {
     font-size: 40px;
     font-family: 'Cairo', sans-serif;
     background: rgba(255, 255, 255, 0.1);
-}
-
-.my-coins {
-    display: grid;
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(5, 1fr);
-
-}
-
-.coins-header {
-    grid-column: 1/2;
-}
-
-.bitcoin-column {
-    grid-row: 1/10;
-    grid-column: 2/3;
-}
-
-.litecoin-column {
-    grid-row: 1/10;
-    grid-column: 3/4;
-}
-
-.ethereum-column {
-    grid-row: 1/10;
-    grid-column: 4/5;
-}
-
-.bitcoin-cash-column {
-    grid-row: 1/10;
-    grid-column: 5/6;
 }
 
 label {
@@ -236,6 +195,7 @@ button {
         .container {
             max-width: 1280px;
             margin: 0 auto;
+            grid-template-rows: 1fr 450px 450px 500px 1fr;
         }
 
         .header-area {
@@ -272,40 +232,11 @@ button {
         }
         
 
-        /*.my-coins {
+        .my-coins {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             grid-template-rows: repeat(5, 1fr);
-        
-
-        .my-coins {
-            display: block;
-        }
-        .coins-row {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
         }
 
-        .bitcoin-column {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-        }
-
-   
-        .litecoin-column {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-        }
-        
-        .ethereum-column {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-        }
-        
-        .bitcoin-cash-column {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-        }}*/
-    
     }
 }

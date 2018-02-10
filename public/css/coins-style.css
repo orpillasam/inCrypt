@@ -7,8 +7,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: auto auto auto auto auto auto 150px;
-    grid-row-gap: 50px;
+    grid-template-rows: 250px auto 800px 800px auto 800px2fr;
     justify-content: center;
 }
 
@@ -24,7 +23,6 @@ body {
     color: #66FCF1;
     padding: 5px 30px;
     letter-spacing: 2px;
-    z-index: 2;
 }
 
 button {
@@ -64,7 +62,7 @@ button {
     
 }
 
-.my-wallet, .my-trade , .my-coins, .coin-chart-area {
+.my-wallet, .my-trade , .my-coins, .coin-chart-area{
     color: #C5C6C7;
     border-radius: 10px;
 	border: 3px #66FCF1 solid;
@@ -73,26 +71,8 @@ button {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.my-coins {
-    display: grid;
-    grid-template-columns: auto auto;
-}
-
-.coins-header {
-    grid-column: 1/2;
-}
-
-.coins-value {
-    grid-row: 1/10;
-    grid-column: 2/3;
-}
-.coin-chart-area {
-    padding: 5px;
-}
-
 label {
     padding-right: 10px;
-    
 }
 
 .trade-form {
@@ -165,6 +145,23 @@ td {
         .container {
             max-width: 1280px;
             margin: 0 auto;
+            grid-template-rows: 1fr 450px 300px 500px 1fr;
+        }
+
+        .header-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 100px;
+        }
+
+        img, .logo {
+            grid-column: 1/3;
+            padding-bottom: 30px;
+            height: 320px;
+        }
+
+        .user-login {
+            text-align: right;
         }
 
         .my-wallet {
@@ -183,7 +180,12 @@ td {
             grid-column: 3/4;
             padding-left: 350px;
         }
+    
+        .my-coins {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
 
-        
     }
 }
