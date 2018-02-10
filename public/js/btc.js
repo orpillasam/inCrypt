@@ -2,8 +2,8 @@ $(document).ready( function() {
 
 	const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", "Bitcoin Cash": "BCH"};
 
-    const coinList = $("#coin-body");
-    const coinContainer = $("#portfolio-row");
+    // const coinList = $("#coin-body");
+    // const coinContainer = $("#portfolio-row");
 
 	const tradeList = $("tbody");
 	const tradeContainer = $(".trades-row");
@@ -13,7 +13,20 @@ $(document).ready( function() {
 	getCoins();
 	let currentTime = moment();
     console.log("current time is " + currentTime);
-  
+
+    // var nameInput = $("#coin-name");
+    const coinList = $("tbody");
+    const coinContainer = $("#portfolio-row");
+    let tradeInput = $("#trade-input");
+    let exchangeInput = $("#exchange-input");
+    let coinInput = $("#coin-input");
+    let quantityInput = $("#quantity-input");
+    let priceInput = $("#trade-price-input");
+    let dateInput = $("#trade-date-input");
+    let currentPriceBTC;
+    let currentPriceLTC;
+    let currentPriceETH;
+    let currentPriceBCH; 
 
 
 	//on click commands for each button 
@@ -22,7 +35,7 @@ $(document).ready( function() {
 	// $(document).on("click", ".trade-item", editTrade);
 	// $(document).on("keyup", ".trade-item", finishEdit);
 	// $(document).on("blur", ".trade-item", cancelEdit);
-	$(document).on("submit", "#trade-form", insertTrade, updateCoin);
+	$(document).on("submit", ".trade-form", insertTrade, updateCoin);
 
 
 /************************  API Routes to the Database*************************/
@@ -104,7 +117,7 @@ $(document).ready( function() {
     //called in function getTrades
     function createTradeRow(tradeData) {
 
-        let tradeCost = (tradeData.trade_quantity * tradeData.trade_quantity).toFixed(2);
+        let tradeCost = (tradeData.trade_quantity * tradeData.trade_price).toFixed(2);
         console.log("trade cost is " + tradeCost);
         var newTr = $("<tr>");
         newTr.data("trades", tradeData);
@@ -258,6 +271,35 @@ function renderEmpty() {
         console.log("nothing in the coin table");
         // alertDiv.text("You must fill out all fields");
         coinContainer.append(alertDiv);
-	}
+    }
+    
+
+    $("#trade-submit-button").on("click", function(){
+        insertTrade();
+        getTrades();
+    });
+
+    // This function inserts a new  into our database and then updates the view
+	function insertTrade() {
+        // event.preventDefault();
+        
+        console.log("coin input is " + coinInput.val().trim());
+        let coinSymbol = coinConversion[coinInput.val().trim()];
+        console.log("coin symbol is " + coinSymbol);
+		let trade = {
+            coin: coinInput.val().trim(),
+            coin_symbol: coinSymbol,
+            trade_type: tradeInput.val().trim(),
+            exchange_type: exchangeInput.val().trim(),
+	    	trade_quantity: quantityInput.val().trim(),
+	    	trade_price: priceInput.val().trim(),
+            trade_date: dateInput.val().trim()
+        };
+        
+        console.log("checking if insertTrade works. Trade is " + trade);
+		$.post("/api/trades", trade);
+		// $newItemInput.val("");
+
+	};    
 	
 });

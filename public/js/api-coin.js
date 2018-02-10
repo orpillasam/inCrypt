@@ -35,7 +35,10 @@ $(document).ready( function() {
         let currentPriceBTC, currentPriceLTC, currentPriceETH, currentPriceBCH;
         let oneDayBTC, oneDayLTC, oneDayETH, oneDayBCH;
         let oneMonthBTC, oneMonthLTC, oneMonthETH, oneMonthBCH;
-
+        let BTCAverage = 9324.21
+        let LTCAverage = 137.50
+        let ETHAverage = 854.66
+        let BCHAverage = 2216.10
         let coinBTC = "BTC";
         let coinLTC = "LTC";
         let coinETH = "ETH";
@@ -231,7 +234,7 @@ $(document).ready( function() {
             $("#bitcoin-value").text("$" + BTCValue);
             console.log("BTC value is " + BTCValue);
 
-            let BTCAverage = (currentPriceBTC / BTCQuantity).toFixed(2);
+            // let BTCAverage = (BTCAverage * BTCQuantity).toFixed(2);
             $("#bitcoin-avg-cost").text("$" + BTCAverage)
             console.log("BTC average is " + BTCAverage)
 
@@ -255,7 +258,7 @@ $(document).ready( function() {
             console.log("btc month change is " + BTCMonthChange);
 
             let BTCMonthPercentChange = ((BTCMonthChange / BTCValue) * 100).toFixed(2);
-            $("#bitcoin-month-per").text (BTCMonthPercentChange + "%");
+            $("#bitcoin-month-per").text(BTCMonthPercentChange + "%");
 
 
             //*************************litecoin*******************//
@@ -268,7 +271,7 @@ $(document).ready( function() {
             $("#litecoin-value").text("$" + LTCValue);
             console.log("LTC value is " + LTCValue);
 
-            let LTCAverage = (currentPriceLTC / LTCQuantity).toFixed(2);
+            // let LTCAverage = (currentPriceLTC / LTCQuantity).toFixed(2);
             $("#litecoin-avg-cost").text("$" + LTCAverage)
             console.log("LTC average is " + LTCAverage)
 
@@ -292,7 +295,7 @@ $(document).ready( function() {
             console.log("Ltc month change is " + LTCMonthChange);
 
             let LTCMonthPercentChange = ((LTCMonthChange / LTCValue) * 100).toFixed(2);
-            $("#litecoin-month-per").text (LTCMonthPercentChange + "%");
+            $("#litecoin-month-per").text(LTCMonthPercentChange + "%");
 
 
             //******************ethereum*********************//
@@ -305,7 +308,7 @@ $(document).ready( function() {
             $("#ethereum-value").text("$" + ETHValue);
             console.log("ETH value is " + ETHValue);
 
-            let ETHAverage = (currentPriceETH / ETHQuantity).toFixed(2);
+            // let ETHAverage = (currentPriceETH / ETHQuantity).toFixed(2);
             $("#ethereum-avg-cost").text("$" + ETHAverage)
             console.log("ETH average is " + ETHAverage)
 
@@ -329,7 +332,7 @@ $(document).ready( function() {
             console.log("ETH month change is " + ETHMonthChange);
 
             let ETHMonthPercentChange = ((ETHMonthChange / ETHValue) * 100).toFixed(2);
-            $("#ethereum-month-per").text (ETHMonthPercentChange + "%");
+            $("#ethereum-month-per").text(ETHMonthPercentChange + "%");
 
 
 
@@ -343,7 +346,7 @@ $(document).ready( function() {
             $("#bitcoin-cash-value").text("$" + BCHValue);
             console.log("BCH value is " + BCHValue);
 
-            let BCHAverage = (currentPriceBCH / BCHQuantity).toFixed(2);
+            // let BCHAverage = (currentPriceBCH / BCHQuantity).toFixed(2);
             $("#bitcoin-cash-avg-cost").text("$" + BCHAverage)
             console.log("BCH average is " + BCHAverage)
 

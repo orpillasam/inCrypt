@@ -1,5 +1,6 @@
 $(document).ready( function() {
-
+    
+	const coinConversion = {"Bitcoin": "BTC", "Ethereum": "ETH", "Litecoin": "LTC", "Bitcoin Cash": "BCH"};
     // var nameInput = $("#coin-name");
     const coinList = $("tbody");
     const coinContainer = $("#portfolio-row");

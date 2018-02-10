@@ -13,7 +13,7 @@ $(document).ready( function() {
 	getCoins();
 	let currentTime = moment();
     console.log("current time is " + currentTime);
-    dayChangePercent();
+
 
 
 	//on click commands for each button 
@@ -104,7 +104,7 @@ $(document).ready( function() {
     //called in function getTrades
     function createTradeRow(tradeData) {
         
-        let tradeCost = (tradeData.trade_quantity * trade_quantity).toFixed(2);
+        let tradeCost = (tradeData.trade_quantity * tradeData.trade_quantity).toFixed(2);
         console.log("trade cost is " + tradeCost);
         var newTr = $("<tr>");
         newTr.data("trades", tradeData);
