@@ -213,8 +213,10 @@ $(document).ready( function() {
             console.log("BCH Price 1 Month Ago: " + oneMonthBCH);
         });  
 
-        setTimeout(function(){getWallet();}, 5000);
-        setTimeout(function(){getCoinWallet();}, 5000);
+
+        setTimeout(function(){getWallet();}, 2000);
+        setTimeout(function(){getCoinWallet();}, 2000);
+
 
         function getCoinWallet(){
 
@@ -393,7 +395,7 @@ $(document).ready( function() {
 
     
             let walletMonthChange = (walletTotal - walletMonthTotal).toFixed(2);
-            $("#month-dollar-wallet").text("$" + walletMonthChange);
+            $("#month-dollar-wallet").text(walletMonthChange);
     
             let walletMonthPercentChange = ((walletMonthChange / walletTotal) *100).toFixed(2);
             $("#month-percent-wallet").text(walletMonthPercentChange + "%");
