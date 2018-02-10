@@ -212,8 +212,8 @@ $(document).ready( function() {
             console.log("BCH Price 1 Month Ago: " + oneMonthBCH);
         });  
 
-        setTimeout(function(){getWallet();}, 3000);
-        setTimeout(function(){getCoinWallet();}, 3000);
+        setTimeout(function(){getWallet();}, 2000);
+        setTimeout(function(){getCoinWallet();}, 2000);
 
         function getCoinWallet(){
 
@@ -222,7 +222,6 @@ $(document).ready( function() {
             $("#bitcoin-type").text("Bitcoin");
 
             $("#bitcoin-qty").text(BTCQuantity);
-
 
             let BTCValue = (currentPriceBTC * BTCQuantity).toFixed(2);
             $("#bitcoin-value").text("$" + BTCValue);
@@ -364,7 +363,7 @@ $(document).ready( function() {
             let BCHMonthPercentChange = ((BCHMonthChange / BCHValue) * 100).toFixed(2);
             $("#bitcoin-cash-month-per").text (BCHMonthPercentChange + "%");
        
-        makePosNeg();
+            makePosNeg();
         }
 
         function getWallet(){
