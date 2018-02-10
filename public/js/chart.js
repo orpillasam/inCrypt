@@ -100,7 +100,7 @@ $(document).ready( function() {
     11125.65
     ]]
     
-        var myChart = Highcharts.stockChart('stock-chart', {
+        var myChart = Highcharts.stockChart('btc-charts', {
     
             rangeSelector: {
                 selected: 1

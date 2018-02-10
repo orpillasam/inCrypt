@@ -26,7 +26,7 @@ $(document).ready( function() {
           if (temp < 0) {temp.className = "negative";}
           else {temp.className = "positive";}
       }
-
+    };
 
 /***********************Outside API Calls ******************************/
 /***********************************************************************/
@@ -423,4 +423,5 @@ $(document).ready( function() {
         $.post("/api/coins", trade);
         // $newItemInput.val("");
     };
+
 });
