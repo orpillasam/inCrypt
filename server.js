@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const moment = require("moment");
-
+const Highcharts = require('highcharts/highstock');
 
 const app = express();
 const server = require('http').Server(app);
