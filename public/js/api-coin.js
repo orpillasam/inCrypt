@@ -423,4 +423,5 @@ $(document).ready( function() {
         $.post("/api/coins", trade);
         // $newItemInput.val("");
     };
+
 });
