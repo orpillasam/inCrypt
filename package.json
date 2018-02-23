@@ -1,5 +1,5 @@
 {
-  "name": "incrypts",
+  "name": "incrypt",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/orpillasam/inCrypts.git"
+    "url": "git+https://github.com/orpillasam/inCrypt.git"
   },
   "author": "",
   "license": "ISC",
